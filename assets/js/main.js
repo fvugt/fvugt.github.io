@@ -1,209 +1,136 @@
-jQuery(document).ready(function(){ 
-	
-	/* ---------------------------------------------------------------------- */
-	/*	Custom Functions
-	/* ---------------------------------------------------------------------- */
+/**
+* Template Name: PhotoFolio
+* Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
+* Updated: Aug 07 2024 with Bootstrap v5.3.3
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
 
-	// Logo
-	var $logo 	= $('#logo');
+(function() {
+  "use strict";
 
-    if (location.href.indexOf("#") != -1) {
-        $logo.show();
+  /**
+   * Apply .scrolled class to the body as the page is scrolled down
+   */
+  function toggleScrolled() {
+    const selectBody = document.querySelector('body');
+    const selectHeader = document.querySelector('#header');
+    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
+    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+  }
+
+  document.addEventListener('scroll', toggleScrolled);
+  window.addEventListener('load', toggleScrolled);
+
+  /**
+   * Mobile nav toggle
+   */
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+
+  function mobileNavToogle() {
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('bi-list');
+    mobileNavToggleBtn.classList.toggle('bi-x');
+  }
+  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+
+  /**
+   * Hide mobile nav on same-page/hash links
+   */
+  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+    navmenu.addEventListener('click', () => {
+      if (document.querySelector('.mobile-nav-active')) {
+        mobileNavToogle();
+      }
+    });
+
+  });
+
+  /**
+   * Toggle mobile nav dropdowns
+   */
+  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+    navmenu.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.parentNode.classList.toggle('active');
+      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+      e.stopImmediatePropagation();
+    });
+  });
+
+  /**
+   * Preloader
+   */
+  const preloader = document.querySelector('#preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        preloader.classList.add('loaded');
+      }, 1000);
+      setTimeout(() => {
+        preloader.remove();
+      }, 2000);
+    });
+  }
+
+  /**
+   * Scroll top button
+   */
+  let scrollTop = document.querySelector('.scroll-top');
+
+  function toggleScrollTop() {
+    if (scrollTop) {
+      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
-	// Show logo 
-	$('.menu .tabs a').click(function() {
-	  $logo.fadeIn('slow');
-	});
-	// Hide logo
-	$('.tab-profile').click(function() {
-	  $logo.fadeOut('slow');
-	});	
-
-    
-	/* ---------------------------------------------------------------------- */
-	/*							RESUME
-	/* ---------------------------------------------------------------------- */
-
-	// color
-
-	$('#pico-color').click(function(e){
-		$(".main-wrapper-resume").attr("id","pico");
-	});
-
-	$('#red-color').click(function(e){
-		$(".main-wrapper-resume").attr("id","red");
-	});
-
-	$('#midnight-color').click(function(e){
-		$(".main-wrapper-resume").attr("id","midnight");
-	});
-
-	$('#green-color').click(function(e){
-		$(".main-wrapper-resume").attr("id","green");
-	});
-
-
-	$(".setting-icon").click(function(){
-		$(".color-box").toggleClass("main")
-	});
-
-
-
-
-	
-	// Rating bars
-	$(".skills li .rating").each(function(index,e) { 
-
-		// Vars
-		var 
-			$ratNum = 7,
-			$rat = $(e).attr("data-rat"),
-			$point = "<span></span>";
-
-		// Append points
-		while($ratNum > 0){
-		     $(e).append($point);
-		     $ratNum--;
-		}
-
-		$(e).find("span").each(function(index,e) { 
-			if(index >= $rat) return false;
-			// Append Disabled Rats
-			$(e).animate({
-			    opacity: 1
-			  });
-		});
-
+  }
+  scrollTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
+  });
 
+  window.addEventListener('load', toggleScrollTop);
+  document.addEventListener('scroll', toggleScrollTop);
 
-
-
-	/* ---------------------------------------------------------------------- */
-	/*							ABOUT
-	/* ---------------------------------------------------------------------- */
-	
-	// Profile Photo Slider
-	 $(".photo-inner ul").carouFredSel({
-        direction           : "left",
- 	    circular: true,
-        auto    			: true,
-        scroll 			: {
-            items           : 1,
-            fx 				: 'crossfade',
-            duration        : 1500,                        
-            wipe    		: true
-        },
-	    swipe: {
-	        onTouch: true
-	    },
-        items: {
-            width: 153
-        }           
+  /**
+   * Animation on scroll function and init
+   */
+  function aosInit() {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
     });
-	 
-	/* ---------------------------------------------------------------------- */
-	/*							MENU
-	/* ---------------------------------------------------------------------- */
-	
-	// Needed variables
-	var $content 		= $("#content");
-	
-	// Run easytabs
-  	$content.easytabs({
-	  animate			: true,
-	  updateHash		: false,
-	  transitionIn		:'slideDown',
-	  transitionOut		:'slideUp',
-	  animationSpeed	:600,
-	  tabs				:".tmenu",
-	  tabActiveClass	:'active',
-	});
+  }
+  window.addEventListener('load', aosInit);
 
-	
-	// Hover menu effect
-	$content.find('.tabs li a').hover(
-		function() {
-			$(this).stop().animate({ marginTop: "-7px" }, 200);
-		},function(){
-			$(this).stop().animate({ marginTop: "0px" }, 300);
-		}
-	);
+  /**
+   * Initiate glightbox
+   */
+  const glightbox = GLightbox({
+    selector: '.glightbox'
+  });
 
-	// Menu Navigation
-	 $(".menu .tabs").carouFredSel({
-        responsive          : true,
-        direction           : "left",
- 	    circular: false,
-    	infinite: false,
-        pagination  		: "#menu-controls",  
-        auto    			: false,
-        scroll 			: {
-            items           : 1,
-            duration        : 300,                        
-            wipe    : true
-        },
-		prev	: {	
-			button	: "#menu-prev",
-			key		: "right"
-		},
-		next	: { 
-			button	: "#menu-next",
-			key		: "left"
-		},
-	    swipe: {
-	        onTouch: true
-	    },
-        items: {
-            width: 140,
-            visible: {
-              min: 2,
-              max: 5
-            }
-        }           
+  /**
+   * Init swiper sliders
+   */
+  function initSwiper() {
+    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+      let config = JSON.parse(
+        swiperElement.querySelector(".swiper-config").innerHTML.trim()
+      );
+
+      if (swiperElement.classList.contains("swiper-tab")) {
+        initSwiperWithCustomPagination(swiperElement, config);
+      } else {
+        new Swiper(swiperElement, config);
+      }
     });
-	/* ---------------------------------------------------------------------- */
-	/*								Cats Filter
-	/* ---------------------------------------------------------------------- */ 
-	
-	var $catsfilter 		= $('.cats-filter');
+  }
 
-	// Copy categories to item classes
-	$catsfilter.find('a').click(function() {
-		var currentOption = $(this).attr('data-filter');
-		$(this).parent().parent().find('a').removeClass('current');
-		$(this).addClass('current');
-	});	
+  window.addEventListener("load", initSwiper);
 
-	/* ---------------------------------------------------------------------- */
-	/*								PORTFOLIO
-	/* ---------------------------------------------------------------------- */ 
-	
-	// Needed variables
-	var $plist	 	= $('#portfolio-list');
-	var $pfilter 		= $('#portfolio-filter');
-		
-	// Run Isotope  
-	$plist.isotope({
-		filter				: '*',
-		layoutMode   		: 'masonry',
-		animationOptions	: {
-		duration			: 750,
-		easing				: 'linear'
-	   }
-	});	
-	
-	// Isotope Filter 
-	$pfilter.find('a').click(function(){
-	  var selector = $(this).attr('data-filter');
-		$plist.isotope({ 
-		filter				: selector,
-		animationOptions	: {
-		duration			: 750,
-		easing				: 'linear',
-		queue				: false,
-	   }
-	  });
-	  return false;
-	});	 
-});	
+})();
