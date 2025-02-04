@@ -1,151 +1,209 @@
-/**
-* Template Name: Personal - v2.1.0
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-!(function($) {
-  "use strict";
+jQuery(document).ready(function(){ 
+	
+	/* ---------------------------------------------------------------------- */
+	/*	Custom Functions
+	/* ---------------------------------------------------------------------- */
 
-  // Nav Menu
-  $(document).on('click', '.nav-menu a, .mobile-nav a', function(e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var hash = this.hash;
-      var target = $(hash);
-      if (target.length) {
-        e.preventDefault();
+	// Logo
+	var $logo 	= $('#logo');
 
-        if ($(this).parents('.nav-menu, .mobile-nav').length) {
-          $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-          $(this).closest('li').addClass('active');
-        }
-
-        if (hash == '#header') {
-          $('#header').removeClass('header-top');
-          $("section").removeClass('section-show');
-          return;
-        }
-
-        if (!$('#header').hasClass('header-top')) {
-          $('#header').addClass('header-top');
-          setTimeout(function() {
-            $("section").removeClass('section-show');
-            $(hash).addClass('section-show');
-          }, 350);
-        } else {
-          $("section").removeClass('section-show');
-          $(hash).addClass('section-show');
-        }
-
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-          $('.mobile-nav-overly').fadeOut();
-        }
-
-        return false;
-
-      }
+    if (location.href.indexOf("#") != -1) {
+        $logo.show();
     }
-  });
+	// Show logo 
+	$('.menu .tabs a').click(function() {
+	  $logo.fadeIn('slow');
+	});
+	// Hide logo
+	$('.tab-profile').click(function() {
+	  $logo.fadeOut('slow');
+	});	
 
-  // Activate/show sections on load with hash links
-  if (window.location.hash) {
-    var initial_nav = window.location.hash;
-    if ($(initial_nav).length) {
-      $('#header').addClass('header-top');
-      $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-      $('.nav-menu, .mobile-nav').find('a[href="' + initial_nav + '"]').parent('li').addClass('active');
-      setTimeout(function() {
-        $("section").removeClass('section-show');
-        $(initial_nav).addClass('section-show');
-      }, 350);
-    }
-  }
+    
+	/* ---------------------------------------------------------------------- */
+	/*							RESUME
+	/* ---------------------------------------------------------------------- */
 
-  // Mobile Navigation
-  if ($('.nav-menu').length) {
-    var $mobile_nav = $('.nav-menu').clone().prop({
-      class: 'mobile-nav d-lg-none'
-    });
-    $('body').append($mobile_nav);
-    $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>');
-    $('body').append('<div class="mobile-nav-overly"></div>');
+	// color
 
-    $(document).on('click', '.mobile-nav-toggle', function(e) {
-      $('body').toggleClass('mobile-nav-active');
-      $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-      $('.mobile-nav-overly').toggle();
-    });
+	$('#pico-color').click(function(e){
+		$(".main-wrapper-resume").attr("id","pico");
+	});
 
-    $(document).click(function(e) {
-      var container = $(".mobile-nav, .mobile-nav-toggle");
-      if (!container.is(e.target) && container.has(e.target).length === 0) {
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-          $('.mobile-nav-overly').fadeOut();
-        }
-      }
-    });
-  } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
-    $(".mobile-nav, .mobile-nav-toggle").hide();
-  }
+	$('#red-color').click(function(e){
+		$(".main-wrapper-resume").attr("id","red");
+	});
 
-  // jQuery counterUp
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
+	$('#midnight-color').click(function(e){
+		$(".main-wrapper-resume").attr("id","midnight");
+	});
 
-  // Skills section
-  $('.skills-content').waypoint(function() {
-    $('.progress .progress-bar').each(function() {
-      $(this).css("width", $(this).attr("aria-valuenow") + '%');
-    });
-  }, {
-    offset: '80%'
-  });
+	$('#green-color').click(function(e){
+		$(".main-wrapper-resume").attr("id","green");
+	});
 
-  // Testimonials carousel (uses the Owl Carousel library)
-  $(".testimonials-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      768: {
-        items: 2
-      },
-      900: {
-        items: 3
-      }
-    }
-  });
 
-  // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
+	$(".setting-icon").click(function(){
+		$(".color-box").toggleClass("main")
+	});
+
+
+
+
+	
+	// Rating bars
+	$(".skills li .rating").each(function(index,e) { 
+
+		// Vars
+		var 
+			$ratNum = 7,
+			$rat = $(e).attr("data-rat"),
+			$point = "<span></span>";
+
+		// Append points
+		while($ratNum > 0){
+		     $(e).append($point);
+		     $ratNum--;
+		}
+
+		$(e).find("span").each(function(index,e) { 
+			if(index >= $rat) return false;
+			// Append Disabled Rats
+			$(e).animate({
+			    opacity: 1
+			  });
+		});
+
     });
 
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
 
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
+
+
+	/* ---------------------------------------------------------------------- */
+	/*							ABOUT
+	/* ---------------------------------------------------------------------- */
+	
+	// Profile Photo Slider
+	 $(".photo-inner ul").carouFredSel({
+        direction           : "left",
+ 	    circular: true,
+        auto    			: true,
+        scroll 			: {
+            items           : 1,
+            fx 				: 'crossfade',
+            duration        : 1500,                        
+            wipe    		: true
+        },
+	    swipe: {
+	        onTouch: true
+	    },
+        items: {
+            width: 153
+        }           
     });
+	 
+	/* ---------------------------------------------------------------------- */
+	/*							MENU
+	/* ---------------------------------------------------------------------- */
+	
+	// Needed variables
+	var $content 		= $("#content");
+	
+	// Run easytabs
+  	$content.easytabs({
+	  animate			: true,
+	  updateHash		: false,
+	  transitionIn		:'slideDown',
+	  transitionOut		:'slideUp',
+	  animationSpeed	:600,
+	  tabs				:".tmenu",
+	  tabActiveClass	:'active',
+	});
 
-  });
+	
+	// Hover menu effect
+	$content.find('.tabs li a').hover(
+		function() {
+			$(this).stop().animate({ marginTop: "-7px" }, 200);
+		},function(){
+			$(this).stop().animate({ marginTop: "0px" }, 300);
+		}
+	);
 
-  // Initiate venobox (lightbox feature used in portofilo)
-  $(document).ready(function() {
-    $('.venobox').venobox();
-  });
+	// Menu Navigation
+	 $(".menu .tabs").carouFredSel({
+        responsive          : true,
+        direction           : "left",
+ 	    circular: false,
+    	infinite: false,
+        pagination  		: "#menu-controls",  
+        auto    			: false,
+        scroll 			: {
+            items           : 1,
+            duration        : 300,                        
+            wipe    : true
+        },
+		prev	: {	
+			button	: "#menu-prev",
+			key		: "right"
+		},
+		next	: { 
+			button	: "#menu-next",
+			key		: "left"
+		},
+	    swipe: {
+	        onTouch: true
+	    },
+        items: {
+            width: 140,
+            visible: {
+              min: 2,
+              max: 5
+            }
+        }           
+    });
+	/* ---------------------------------------------------------------------- */
+	/*								Cats Filter
+	/* ---------------------------------------------------------------------- */ 
+	
+	var $catsfilter 		= $('.cats-filter');
 
-})(jQuery);
+	// Copy categories to item classes
+	$catsfilter.find('a').click(function() {
+		var currentOption = $(this).attr('data-filter');
+		$(this).parent().parent().find('a').removeClass('current');
+		$(this).addClass('current');
+	});	
+
+	/* ---------------------------------------------------------------------- */
+	/*								PORTFOLIO
+	/* ---------------------------------------------------------------------- */ 
+	
+	// Needed variables
+	var $plist	 	= $('#portfolio-list');
+	var $pfilter 		= $('#portfolio-filter');
+		
+	// Run Isotope  
+	$plist.isotope({
+		filter				: '*',
+		layoutMode   		: 'masonry',
+		animationOptions	: {
+		duration			: 750,
+		easing				: 'linear'
+	   }
+	});	
+	
+	// Isotope Filter 
+	$pfilter.find('a').click(function(){
+	  var selector = $(this).attr('data-filter');
+		$plist.isotope({ 
+		filter				: selector,
+		animationOptions	: {
+		duration			: 750,
+		easing				: 'linear',
+		queue				: false,
+	   }
+	  });
+	  return false;
+	});	 
+});	
