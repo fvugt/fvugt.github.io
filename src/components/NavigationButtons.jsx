@@ -37,7 +37,6 @@ function NavigationButtons({ onPrevious, onNext, style = "default", className = 
       <div className={`
         fixed 
         inset-0
-        z-[100]
         hidden 
         md:block
         pointer-events-none

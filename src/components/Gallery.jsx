@@ -45,7 +45,7 @@ function Gallery({ media }) {
               src={getYouTubeUrl(item.src)}
               className="absolute inset-0 w-full h-full"
               title="YouTube video"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
               allowFullScreen
             />
             <div className="absolute top-2 right-2 bg-black/70 px-2 py-1 rounded text-xs uppercase">
@@ -57,10 +57,10 @@ function Gallery({ media }) {
       return (
         <div className="relative cursor-pointer" onClick={onClick}>
           <video 
-            src={item.src} 
+            src={`${import.meta.env.BASE_URL}${item.src}`} 
             controls 
             className="h-64 w-full object-cover"
-            poster={item.poster}
+            poster={`${import.meta.env.BASE_URL}${item.poster}`}
           />
           <div className="absolute top-2 right-2 bg-black/70 px-2 py-1 rounded text-xs uppercase">
             Video
@@ -71,7 +71,7 @@ function Gallery({ media }) {
 
     return (
       <img 
-        src={item.src} 
+        src={`${import.meta.env.BASE_URL}${item.src}`} 
         alt="Gallery item" 
         className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity" 
         onClick={onClick}
@@ -110,22 +110,22 @@ function Gallery({ media }) {
                     src={getYouTubeUrl(item.src)}
                     className="absolute inset-0 w-full h-full"
                     title="YouTube video"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
                     allowFullScreen
                   />
                 </div>
               </div>
             ) : (
               <video 
-                src={item.src} 
+                src={`${import.meta.env.BASE_URL}${item.src}`} 
                 controls 
                 className="max-h-[80vh] mx-auto"
-                poster={item.poster}
+                poster={`${import.meta.env.BASE_URL}${item.poster}`}
               />
             )
           ) : (
             <img 
-              src={item.src} 
+              src={`${import.meta.env.BASE_URL}${item.src}`} 
               alt="Gallery item" 
               className="max-h-[80vh] mx-auto" 
             />
@@ -164,13 +164,13 @@ function Gallery({ media }) {
           <div className="flex justify-center gap-4 mt-6">
             <button 
               onClick={() => navigate('prev')}
-              className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors z-10"
             >
               <ArrowLeft className="w-5 h-5 text-white/80" />
             </button>
             <button 
               onClick={() => navigate('next')}
-              className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors z-10"
             >
               <ArrowRight className="w-5 h-5 text-white/80" />
             </button>

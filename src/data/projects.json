@@ -3,8 +3,8 @@
         "id": 1,
         "slug": "fake",
         "title": "Stapferhaus Lenzburg: Fake",
-        "imgSrc": "/src/assets/fake/fake_header-1024x575.jpg",
-        "demoVideo": "/src/assets/fake/fake-video.mp4",
+        "imgSrc": "assets/projects/fake/fake_header-1024x575.jpg",
+        "demoVideo": "assets/projects/fake/fake-video.mp4",
         "description": "For <a href='https://www.stapferhaus.ch/en/' target='_blank'>Stapferhaus</a> in Lenzburg, we created several interactive installations that dare the visitor to think about fake items, news, and lies. One installation is a multiplayer based team game where two teams can playfully see who's better at fact-checking. Another one is an archive of lies where through scanning real packages, the visitor gets to vote how severe a lie is, which is all hooked up to a database to see which lies are the worst, and which that are necessary.",
         "details": [
             {
@@ -20,38 +20,38 @@
         "gallery": [
             {
                 "type": "image",
-                "src": "/src/assets/fake/fake_01.jpg"
+                "src": "assets/projects/fake/fake_01.jpg"
             },
             {
                 "type": "image",
-                "src": "/src/assets/fake/fake_02.jpg"
+                "src": "assets/projects/fake/fake_02.jpg"
             },
             {
                 "type": "video",
-                "src": "/src/assets/fake/fake-video.mp4",
-                "poster": "/src/assets/fake/fake_02.jpg"
+                "src": "assets/projects/fake/fake-video.mp4",
+                "poster": "assets/projects/fake/fake_02.jpg"
             },
             {
                 "type": "video",
                 "src": "http://www.youtube.com/embed/VmK3lRWenHY",
-                "poster": "/src/assets/fake/fake_02.jpg"
+                "poster": "assets/projects/fake/fake_02.jpg"
             },
             {
                 "type": "image",
-                "src": "/src/assets/fake/fake_02.jpg"
+                "src": "assets/projects/fake/fake_02.jpg"
             }
         ],
         "codeSnippets": [
             {
                 "title": "Fake News Detection Mechanic",
-                "image": "/src/assets/fake/fake_01.jpg",
+                "image": "assets/projects/fake/fake_01.jpg",
                 "description": "This mechanic allows players to fact-check articles in real-time. It challenges users to identify fake news within a time limit.",
                 "language": "javascript",
                 "code": "const handleFakeNews = (article) => {\n  if (article.isFake) {\n    console.log('This article is fake news.');\n  } else {\n    console.log('This article is legitimate.');\n  }\n};"
             },
             {
                 "title": "Voting System",
-                "image": "/src/assets/fake/fake_01.jpg",
+                "image": "assets/projects/fake/fake_01.jpg",
                 "description": "Players vote on the severity of lies found in scanned packages, and the results are stored in a database.",
                 "language": "csharp",
                 "code": "public void VoteOnLie(int severity) {\n  votes.Add(severity);\n  UpdateDatabase(votes);\n}"
@@ -60,14 +60,14 @@
     },
     {
         "id": 2,
-        "slug": "frankfurt",
-        "title": "Historic Museum Frankfurt",
-        "imgSrc": "/src/assets/frankfurt/frankfurt_header-1024x575.jpg",
-        "demoVideo": "",
-        "description": "A historical dive into the rich culture of Frankfurt.",
+        "slug": "fake2",
+        "title": "Stapferhaus Lenzburg: Fake",
+        "imgSrc": "assets/projects/fake/fake_header-1024x575.jpg",
+        "demoVideo": "assets/projects/fake/fake-video.mp4",
+        "description": "For <a href='https://www.stapferhaus.ch/en/' target='_blank'>Stapferhaus</a> in Lenzburg, we created several interactive installations that dare the visitor to think about fake items, news, and lies. One installation is a multiplayer based team game where two teams can playfully see who's better at fact-checking. Another one is an archive of lies where through scanning real packages, the visitor gets to vote how severe a lie is, which is all hooked up to a database to see which lies are the worst, and which that are necessary.",
         "details": [
             {
-                "software": "Unity & C#"
+                "Software": "Unity & C#"
             },
             {
                 "Teamsize": "1"
@@ -79,28 +79,38 @@
         "gallery": [
             {
                 "type": "image",
-                "src": "/src/assets/gallery/fake_01.jpg"
+                "src": "assets/projects/fake/fake_01.jpg"
             },
             {
                 "type": "image",
-                "src": "/src/assets/gallery/fake_02.jpg"
+                "src": "assets/projects/fake/fake_02.jpg"
             },
             {
                 "type": "video",
-                "src": "/src/assets/gallery/fake-video.mp4"
+                "src": "assets/projects/fake/fake-video.mp4",
+                "poster": "assets/projects/fake/fake_02.jpg"
+            },
+            {
+                "type": "video",
+                "src": "http://www.youtube.com/embed/VmK3lRWenHY",
+                "poster": "assets/projects/fake/fake_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/fake/fake_02.jpg"
             }
         ],
         "codeSnippets": [
             {
                 "title": "Fake News Detection Mechanic",
-                "image": "/assets/mechanics/fake-detection.gif",
+                "image": "assets/projects/fake/fake_01.jpg",
                 "description": "This mechanic allows players to fact-check articles in real-time. It challenges users to identify fake news within a time limit.",
                 "language": "javascript",
                 "code": "const handleFakeNews = (article) => {\n  if (article.isFake) {\n    console.log('This article is fake news.');\n  } else {\n    console.log('This article is legitimate.');\n  }\n};"
             },
             {
                 "title": "Voting System",
-                "image": "/assets/mechanics/vote-system.png",
+                "image": "assets/projects/fake/fake_01.jpg",
                 "description": "Players vote on the severity of lies found in scanned packages, and the results are stored in a database.",
                 "language": "csharp",
                 "code": "public void VoteOnLie(int severity) {\n  votes.Add(severity);\n  UpdateDatabase(votes);\n}"

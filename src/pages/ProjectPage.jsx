@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import projects from '../data/projects.json'
 import Banner from '../components/Banner'
 import ProjectDetails from '../components/ProjectDetails'
 import Gallery from '../components/Gallery'
 import MechanicAccordion from '../components/MechanicAccordion'
-import NavigationButtons from '../components/NavigationButtons'
+import NavigationButtons from '../components/NavigationButtons' 
+import projects from '../data/projects.json'
 
 function ProjectPage() {
   const { slug } = useParams()
@@ -51,7 +51,7 @@ function ProjectPage() {
       <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
         <div className="min-h-screen bg-background text-text">
           <div className="max-w-7xl mx-auto px-4">
-            <Banner image={project.imgSrc} style="default" title={project.title} />
+            <Banner image={`${import.meta.env.BASE_URL}${project.imgSrc}`} style="default" title={project.title} />
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-8">
               <div className="lg:col-span-2">
                 <p className="text-lg mb-4" dangerouslySetInnerHTML={{ __html: project.description }} />
@@ -64,7 +64,7 @@ function ProjectPage() {
                 <MechanicAccordion
                   key={index}
                   title={snippet.title}
-                  image={snippet.image}
+                  image={`${import.meta.env.BASE_URL}${snippet.image}`}
                   description={snippet.description}
                   language={snippet.language}
                   code={snippet.code}

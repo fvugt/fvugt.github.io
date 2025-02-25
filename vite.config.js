@@ -4,14 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  base: '/',
+  base: '/',  // or your subdirectory if deploying to GitHub Pages
   plugins: [react(), tailwindcss()],
-  build: {
-    assetsInclude: ['**/*.json'],
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  }
-}) 
+})
