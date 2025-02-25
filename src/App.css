@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+@layer base {
+  a {
+    @apply text-accentColor;
+  }
+}
+
+@theme {
+  --color-backgroundColor: rgb(10,10,10);
+  --color-backgroundBColor: rgb(30,30,30);
+  --color-textColor: rgb(255,255,255);
+  --color-accentColor: rgb(0,180,120);
+}
