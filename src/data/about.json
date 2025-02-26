@@ -1,0 +1,99 @@
+{
+  "intro": {
+    "name": "Frank",
+    "age": 33,
+    "location": "Utrecht",
+    "title": "Game & Application Developer",
+    "bio": "Hi, I'm Frank. A 33 year old guy living in Utrecht. In my free time I like to play groupbased computer games, listen to music and bingewatch Netflix shows."
+  },
+  "experience": [
+    {
+      "role": "Teacher Game Development",
+      "company": "Grafisch Lyceum Utrecht (MBO)",
+      "period": "2019",
+      "current": true
+    },
+    {
+      "role": "Lead Programmer",
+      "company": "Shosho",
+      "period": "2017-2019"
+    },
+    {
+      "role": "Unity developer",
+      "company": "Shosho",
+      "period": "2013-2017"
+    },
+    {
+      "role": "3D generalist",
+      "company": "Shosho",
+      "period": "2012-2013"
+    },
+    {
+      "role": "Internship 3D Generalist",
+      "company": "Shosho",
+      "period": "aug 2010 - feb 2011"
+    },
+    {
+      "role": "Internship 3D Generalist",
+      "company": "Lukkien",
+      "period": "jan 2007 - jul 2007"
+    },
+    {
+      "role": "Internship Flash Developer",
+      "company": "Sense-i",
+      "period": "aug 2006 - jan 2007"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Pedagogisch Didactisch Getuigschrift (Teaching certificate)",
+      "level": "Post Bachelor",
+      "school": "Hogeschool Utrecht",
+      "year": "2019"
+    },
+    {
+      "degree": "Master of Arts (EMMA)",
+      "specialization": "Creative Design for Digital Cultures",
+      "school": "The Open University",
+      "period": "2011-2012"
+    },
+    {
+      "degree": "Computer animation and visual effects",
+      "school": "Hogeschool voor de Kunsten Utrecht",
+      "period": "2008-2012"
+    },
+    {
+      "degree": "Audiovisual interactive design",
+      "school": "Sint Lucas",
+      "period": "2004-2008"
+    }
+  ],
+  "skills": {
+    "software": [
+      "Unity 3D",
+      "Autodesk Maya",
+      "Adobe Photoshop",
+      "Adobe After Effects",
+      "Drupal",
+      "Wordpress",
+      "Android Studio",
+      "Xcode"
+    ],
+    "programming": [
+      "C#",
+      "HLSL",
+      "CG",
+      "PHP",
+      "Javascript",
+      "mySQL"
+    ],
+    "expertise": [
+      "Programming",
+      "Virtual Reality",
+      "Game Development",
+      "3D Modeling",
+      "Compositing",
+      "Rendering"
+    ]
+  }
+} 

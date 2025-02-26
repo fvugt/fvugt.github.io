@@ -6,6 +6,16 @@ import Gallery from '../components/Gallery'
 import MechanicAccordion from '../components/MechanicAccordion'
 import NavigationButtons from '../components/NavigationButtons' 
 import projects from '../data/projects.json'
+import TabsShowcase from '../components/TabsShowcase'
+import TimelineShowcase from '../components/TimelineShowcase'
+import CarouselShowcase from '../components/CarouselShowcase'
+import GridShowcase from '../components/GridShowcase'
+import ProjectHeader from '../components/ProjectHeader'
+import ProjectHeaderMinimal from '../components/ProjectHeaderMinimal'
+import ProjectHeaderCard from '../components/ProjectHeaderCard'
+import ProjectHeaderMagazine from '../components/ProjectHeaderMagazine'
+import ProjectHeaderTimeline from '../components/ProjectHeaderTimeline'
+import ProjectHeaderHero from '../components/ProjectHeaderHero'
 
 function ProjectPage() {
   const { slug } = useParams()
@@ -50,17 +60,23 @@ function ProjectPage() {
       />
       <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
         <div className="min-h-screen bg-background text-text">
-          <div className="max-w-7xl mx-auto px-4">
-            <Banner image={`${import.meta.env.BASE_URL}${project.imgSrc}`} style="default" title={project.title} />
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-8">
-              <div className="lg:col-span-2">
+          <div className="max-w-7xl mx-auto px-4 space-y-8">
+            <ProjectHeader projectData={project} />
+
+            <ProjectHeaderMinimal projectData={project} />
+            <ProjectHeaderCard projectData={project} />
+            <ProjectHeaderMagazine projectData={project} />
+            <ProjectHeaderTimeline projectData={project} />
+            <ProjectHeaderHero projectData={project} />
+            {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-8"> */}
+              {/* <div className="lg:col-span-2">
                 <p className="text-lg mb-4" dangerouslySetInnerHTML={{ __html: project.description }} />
               </div>
-              <ProjectDetails details={project.details} style="list" />
-            </div>
+              <ProjectDetails details={project.details} style="list" /> */}
+            {/* </div> */}
 
             <div className="space-y-4 py-8">
-              {project.codeSnippets.map((snippet, index) => (
+              {/* {project.codeSnippets.map((snippet, index) => (
                 <MechanicAccordion
                   key={index}
                   title={snippet.title}
@@ -70,7 +86,12 @@ function ProjectPage() {
                   code={snippet.code}
                   imagePosition={index % 2 === 0 ? 'left' : 'right'}
                 />
-              ))}
+              ))} */}
+              <MechanicAccordion snippets={project.codeSnippets} />
+              <TabsShowcase snippets={project.codeSnippets} />  
+              <TimelineShowcase snippets={project.codeSnippets} />
+              <CarouselShowcase snippets={project.codeSnippets} />
+              <GridShowcase snippets={project.codeSnippets} />
             </div>
             <Gallery media={project.gallery} style="grid" />
           </div>
