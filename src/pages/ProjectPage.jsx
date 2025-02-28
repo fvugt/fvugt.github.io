@@ -16,7 +16,9 @@ import ProjectHeaderCard from '../components/ProjectHeaderCard'
 import ProjectHeaderMagazine from '../components/ProjectHeaderMagazine'
 import ProjectHeaderTimeline from '../components/ProjectHeaderTimeline'
 import ProjectHeaderHero from '../components/ProjectHeaderHero'
-
+import ProjectGalleryGrid from '../components/ProjectGalleryGrid'
+import ProjectGalleryMasonry from '../components/ProjectGalleryMasonry'
+import ProjectGalleryFluid from '../components/ProjectGalleryFluid'
 function ProjectPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
@@ -60,40 +62,27 @@ function ProjectPage() {
       />
       <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
         <div className="min-h-screen bg-background text-text">
-          <div className="max-w-7xl mx-auto px-4 space-y-8">
+          <div className="max-w-7xl mx-auto px-4 space-y-4">
             <ProjectHeader projectData={project} />
-
-            <ProjectHeaderMinimal projectData={project} />
+            {/* <ProjectHeaderMinimal projectData={project} />
             <ProjectHeaderCard projectData={project} />
             <ProjectHeaderMagazine projectData={project} />
             <ProjectHeaderTimeline projectData={project} />
-            <ProjectHeaderHero projectData={project} />
-            {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-8"> */}
-              {/* <div className="lg:col-span-2">
-                <p className="text-lg mb-4" dangerouslySetInnerHTML={{ __html: project.description }} />
-              </div>
-              <ProjectDetails details={project.details} style="list" /> */}
-            {/* </div> */}
+            <ProjectHeaderHero projectData={project} /> */}
 
-            <div className="space-y-4 py-8">
-              {/* {project.codeSnippets.map((snippet, index) => (
-                <MechanicAccordion
-                  key={index}
-                  title={snippet.title}
-                  image={`${import.meta.env.BASE_URL}${snippet.image}`}
-                  description={snippet.description}
-                  language={snippet.language}
-                  code={snippet.code}
-                  imagePosition={index % 2 === 0 ? 'left' : 'right'}
-                />
-              ))} */}
-              <MechanicAccordion snippets={project.codeSnippets} />
-              <TabsShowcase snippets={project.codeSnippets} />  
-              <TimelineShowcase snippets={project.codeSnippets} />
-              <CarouselShowcase snippets={project.codeSnippets} />
-              <GridShowcase snippets={project.codeSnippets} />
-            </div>
-            <Gallery media={project.gallery} style="grid" />
+            {project.codeSnippets && project.codeSnippets.length > 0 && (
+              <div className="space-y-4 py-8">
+                <MechanicAccordion snippets={project.codeSnippets} />
+                <TabsShowcase snippets={project.codeSnippets} />  
+                <TimelineShowcase snippets={project.codeSnippets} />
+                <CarouselShowcase snippets={project.codeSnippets} />
+                <GridShowcase snippets={project.codeSnippets} />
+              </div>
+            )}
+    
+            {/* <Gallery media={project.gallery} style="grid" /> */}
+            {/* <ProjectGalleryGrid gallery={project.gallery} /> */}
+            <ProjectGalleryFluid gallery={project.gallery} />
           </div>
         </div>
       </div>

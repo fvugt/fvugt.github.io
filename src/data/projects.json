@@ -1,76 +1,164 @@
 [
     {
         "id": 1,
-        "slug": "fake",
-        "title": "Stapferhaus Lenzburg: Fake",
-        "imgSrc": "assets/projects/fake/fake_header-1024x575.jpg",
-        "demoVideo": "assets/projects/fake/fake-video.mp4",
-        "description": "For <a href='https://www.stapferhaus.ch/en/' target='_blank'>Stapferhaus</a> in Lenzburg, we created several interactive installations that dare the visitor to think about fake items, news, and lies. One installation is a multiplayer based team game where two teams can playfully see who's better at fact-checking. Another one is an archive of lies where through scanning real packages, the visitor gets to vote how severe a lie is, which is all hooked up to a database to see which lies are the worst, and which that are necessary.",
+        "slug": "autcom",
+        "title": "Autcom",
+        "imgSrc": "assets/projects/autcom/autcom_header.jpg",
+        "demoVideo": "",
+        "description": "For <a href='https://www.kentalis.nl/' target='_blank'>Kentalis</a>, we developed several interactive games designed to help young children with autism recognize emotions. These games are presented across 26 chapters within an interactive 3D world called “World of Brian”—a long-running project already in development at Shosho when I joined.<br><br>My responsibilities included programming the majority of these games, refining and updating existing assets used in World of Brian, and creating a lightweight PHP/MySQL backend for the login system and research data storage.",
+        "tags": ["Unity", "C#", "Gamification", "Software"],
         "details": [
             {
                 "Software": "Unity & C#"
             },
             {
-                "Teamsize": "1"
+                "Platforms": "Windows, OSX"
             },
             {
-                "Date": "2013"
+                "Teamsize": "3"
+            },
+            {
+                "Date": "2015"
             }
         ],
         "gallery": [
             {
                 "type": "image",
-                "src": "assets/projects/fake/fake_01.jpg"
+                "src": "assets/projects/autcom/autcom_01.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/fake/fake_02.jpg"
-            },
-            {
-                "type": "video",
-                "src": "assets/projects/fake/fake-video.mp4",
-                "poster": "assets/projects/fake/fake_02.jpg"
-            },
-            {
-                "type": "video",
-                "src": "http://www.youtube.com/embed/VmK3lRWenHY",
-                "poster": "assets/projects/fake/fake_02.jpg"
+                "src": "assets/projects/autcom/autcom_02.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/fake/fake_02.jpg"
+                "src": "assets/projects/autcom/autcom_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/autcom/autcom_04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/autcom/autcom_05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/autcom/autcom_06.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/autcom/autcom_07.jpg"
             }
         ],
-        "codeSnippets": [
-            {
-                "title": "Fake News Detection Mechanic",
-                "image": "assets/projects/fake/fake_01.jpg",
-                "description": "This mechanic allows players to fact-check articles in real-time. It challenges users to identify fake news within a time limit.",
-                "language": "javascript",
-                "code": "const handleFakeNews = (article) => {\n  if (article.isFake) {\n    console.log('This article is fake news.');\n  } else {\n    console.log('This article is legitimate.');\n  }\n};const handleFakeNews = (article) => {\n  if (article.isFake) {\n    console.log('This article is fake news.');\n  } else {\n    console.log('This article is legitimate.');\n  }\n};const handleFakeNews = (article) => {\n  if (article.isFake) {\n    console.log('This article is fake news.');\n  } else {\n    console.log('This article is legitimate.');\n  }\n};"
-            },
-            {
-                "title": "Voting System",
-                "image": "assets/projects/fake/fake_01.jpg",
-                "description": "Players vote on the severity of lies found in scanned packages, and the results are stored in a database.",
-                "language": "csharp",
-                "code": "public void VoteOnLie(int severity) {\n  votes.Add(severity);\n  UpdateDatabase(votes);\n}"
-            }
-        ]
+        "codeSnippets": []
     },
     {
         "id": 2,
-        "slug": "fake2",
-        "title": "Stapferhaus Lenzburg: Fake",
-        "imgSrc": "assets/projects/fake/fake_header-1024x575.jpg",
+        "slug": "bolidt",
+        "title": "Bolidt",
+        "imgSrc": "assets/projects/bolidt/bolidt_header.jpg",
         "demoVideo": "",
-        "description": "For <a href='https://www.stapferhaus.ch/en/' target='_blank'>Stapferhaus</a> in Lenzburg, we created several interactive installations that dare the visitor to think about fake items, news, and lies. One installation is a multiplayer based team game where two teams can playfully see who's better at fact-checking. Another one is an archive of lies where through scanning real packages, the visitor gets to vote how severe a lie is, which is all hooked up to a database to see which lies are the worst, and which that are necessary.",
+        "description": "For the <a href='https://bolidt.nl' target='_blank'>Bolidt Experience and Innovation Center</a>, we developed a suite of interactive installations, including a video wall, multiple iOS applications, and an internal show control system. My responsibilities encompassed programming the software solutions and integrating the hardware components.",
+        "tags": ["Unity", "C#", "iOS", "Software", "Sensors"],
         "details": [
             {
                 "Software": "Unity & C#"
             },
             {
-                "Teamsize": "1"
+                "Platforms": "iOS, Android, Windows"
+            },
+            {
+                "Teamsize": "3"
+            },
+            {
+                "Date": "2018"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/bolidt/bolidt_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/bolidt/bolidt_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/bolidt/bolidt_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/bolidt/bolidt_04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/bolidt/bolidt_05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/bolidt/bolidt_06.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 3,
+        "slug": "deadend",
+        "title": "Deadend",
+        "imgSrc": "assets/projects/deadend/deadend_header.jpg",
+        "demoVideo": "",
+        "description": "Together with Luc Thijssen, Ruud Coenen and Stein Louise, I worked on an animated short called Dead End. In addition to creating the environment and the modeling of some props, I was also responsible for the rendering, shading, and compositing using Maya and After Effects. Synopsis: On a desert road a mysterious little box is the cause of a conflict between three characters. All characters are fascinated by the contents of the box and want to obtain it, no matter what. Confidence in each other and trust and distrust come close together in this animation.",
+        "tags": ["Short filmMaya", "After Effects", "Animation"],
+        "details": [
+            {
+                "Teamsize": "4"
+            },
+            {
+                "Software": "Autodesk Maya & After Effects"
+            },
+            {
+                "Date": "2018"
+            }
+        ],
+        "gallery": [
+ 
+            {
+                "type": "video",
+                "src": "assets/projects/deadend/deadend.mp4",
+                "previewTime": 5
+               
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/deadend/deadend_00.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/deadend/deadend_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/deadend/deadend_03.jpg"
+            }           
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 4,
+        "slug": "fake",
+        "title": "Stapferhaus Lenzburg: Fake",
+        "imgSrc": "assets/projects/fake/fake_01.jpg",
+        "demoVideo": "",
+        "description": "For <a href='https://www.stapferhaus.ch/en/' target='_blank'>Stapferhaus</a> in Lenzburg, we created a series of interactive installations that encourage visitors to explore the themes of fake items, news, and lies. <br><br>One installation is a multiplayer-based team game where two teams compete to see who excels at fact-checking. Another is an “archive of lies,” allowing visitors to scan real packages and vote on the severity of each lie, with the results stored in a database to highlight which lies are deemed the worst—and which may be necessary.",
+        "tags": ["Unity", "C#", "Gamification", "Software", "Linux", "Android"],
+        "details": [
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Platforms": "Windows, Linux, Android"
             },
             {
                 "Date": "2013"
@@ -86,63 +174,750 @@
                 "src": "assets/projects/fake/fake_02.jpg"
             },
             {
+                "type": "image",
+                "src": "assets/projects/fake/fake_03.jpg"
+            },
+            {
                 "type": "video",
                 "src": "assets/projects/fake/fake-video.mp4",
                 "poster": "assets/projects/fake/fake_02.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 5,
+        "slug": "fling",
+        "title": "De Fling",
+        "imgSrc": "assets/projects/fling/fling_header.png",
+        "demoVideo": "",
+        "description": "For the <a href='https://www.uva.nl/en' target='_blank'>University of Amsterdam</a>, we developed a game called 'De Fling' to train inhibition among teenagers. 'De Fling' is a 3D rhythm action game that follows a young romance across multiple chapters. Players must press the correct buttons in time with the rhythm, with the added challenge of occasionally skipping a beat. <br><br>I was responsible for all programming and for creating the backend for research analytics, using a combination of PHP and SQL.",
+        "tags": ["Unity", "C#", "PHP", "SQL", "iOS", "Software"],
+        "details": [
+            {
+                "Platform": "Windows, OSX"
             },
             {
-                "type": "video",
-                "src": "http://www.youtube.com/embed/VmK3lRWenHY",
-                "poster": "assets/projects/fake/fake_02.jpg"
+                "Software": "Unity, C#, PHP, SQL"
+            },
+            {
+                "Date": "2017"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/fling/fling_001.png"
             },
             {
                 "type": "image",
-                "src": "assets/projects/fake/fake_02.jpg"
+                "src": "assets/projects/fling/fling_002.png"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/fling/fling_003.png"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/fling/fling_004.png"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/fling/fling_005.png"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/fling/fling_006.png"
             }
         ],
-        "codeSnippets": [
+        "codeSnippets": []
+    },
+    {
+        "id": 6,
+        "slug": "frankfurt",
+        "title": "Historic Museum Frankfurt",
+        "imgSrc": "assets/projects/frankfurt/frankfurt_header.jpg",
+        "demoVideo": "",
+        "description": "For the <a href='https://historisches-museum-frankfurt.de/en/englisch?language=en' target='_blank'>Historic Museum of Frankfurt</a>, we developed an interactive table featuring hotspots that reveal more information about various historical finds around the Frankfurt Stauferhafen. The content was presented using text, photos, and animations in eight different languages. The biggest challenge was managing the content—especially ensuring that non-Latin scripts like Arabic and Chinese displayed correctly. I was responsible for all Unity programming and for administering the content within the CMS.<br><br>In addition, I worked on a film for another museum installation called the Schneekugel—a complex setup featuring eight projectors, a robotic arm, a giant snow globe, and maquettes that explore various themes about Frankfurt. This film focuses on the city’s lost buildings. Because of the installation’s complexity, I set it up in Unity, enabling us to render the film over eight different cameras in near-real time, which greatly accelerated the iteration process.",
+        "tags": ["Unity", "C#", "Software", "Installation"],
+        "details": [
             {
-                "title": "Fake News Detection Mechanic",
-                "image": "assets/projects/fake/fake_01.jpg",
-                "description": "This mechanic allows players to fact-check articles in real-time. It challenges users to identify fake news within a time limit.",
-                "language": "javascript",
-                "code": "const handleFakeNews = (article) => {\n  if (article.isFake) {\n    console.log('This article is fake news.');\n  } else {\n    console.log('This article is legitimate.');\n  }\n};"
+                "Platform": "Linux"
             },
             {
-                "title": "Voting System",
-                "image": "assets/projects/fake/fake_01.jpg",
-                "description": "Players vote on the severity of lies found in scanned packages, and the results are stored in a database.",
-                "language": "csharp",
-                "code": "public void VoteOnLie(int severity) {\n  votes.Add(severity);\n  UpdateDatabase(votes);\n}"
+                "Software": "Unity & C#, Drupal"
             },
             {
-                "title": "Fake News Detection Mechanic",
-                "image": "assets/projects/fake/fake_01.jpg",
-                "description": "This mechanic allows players to fact-check articles in real-time. It challenges users to identify fake news within a time limit.",
-                "language": "javascript",
-                "code": "const handleFakeNews = (article) => {\n  if (article.isFake) {\n    console.log('This article is fake news.');\n  } else {\n    console.log('This article is legitimate.');\n  }\n};"
-            },
-            {
-                "title": "Voting System",
-                "image": "assets/projects/fake/fake_01.jpg",
-                "description": "Players vote on the severity of lies found in scanned packages, and the results are stored in a database.",
-                "language": "csharp",
-                "code": "public void VoteOnLie(int severity) {\n  votes.Add(severity);\n  UpdateDatabase(votes);\n}"
-            },
-            {
-                "title": "Fake News Detection Mechanic",
-                "image": "assets/projects/fake/fake_01.jpg",
-                "description": "This mechanic allows players to fact-check articles in real-time. It challenges users to identify fake news within a time limit.",
-                "language": "javascript",
-                "code": "const handleFakeNews = (article) => {\n  if (article.isFake) {\n    console.log('This article is fake news.');\n  } else {\n    console.log('This article is legitimate.');\n  }\n};"
-            },
-            {
-                "title": "Voting System",
-                "image": "assets/projects/fake/fake_01.jpg",
-                "description": "Players vote on the severity of lies found in scanned packages, and the results are stored in a database.",
-                "language": "csharp",
-                "code": "public void VoteOnLie(int severity) {\n  votes.Add(severity);\n  UpdateDatabase(votes);\n}"
+                "Date": "2016"
             }
-        ]
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/frankfurt/frankfurt_000.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/frankfurt/frankfurt_001.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/frankfurt/frankfurt_002.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/frankfurt/frankfurt_004.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/frankfurt/frankfurt_005.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/frankfurt/frankfurt_006.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 7,
+        "slug": "hiernamaals",
+        "title": "Hiernamaals",
+        "imgSrc": "assets/projects/hiernamaals/hiernamaals_header.jpg",
+        "description": "For the Dutch film <a href='https://www.imdb.com/title/tt9310544/' target='_blank'>Hiernamaals</a>, directed by Willem Bosch, I was tasked with creating realistic-looking environments for some of the live-action shots. Although the resulting footage wasn't considered realistic enough, I gained valuable experience working with Unity’s world-building tools.",
+        "tags": ["Unity", "C#", "Film", "VFX", "World Building"],
+        "details": [
+            {
+                "Platform": "Film, VFX"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2019"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/hiernamaals/hiernamaals_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/hiernamaals/hiernamaals_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/hiernamaals/hiernamaals_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/hiernamaals/hiernamaals_04.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 8,
+        "slug": "hku",
+        "title": "HKU",
+        "imgSrc": "assets/projects/hku/hku_header.jpg",
+        "demoVideo": "",
+        "description": "During my time at the HKU (University of the Arts Utrecht) studying Computer Graphics & Animation, I developed my animation and 3D skills in Maya and After Effects, complemented by courses in storytelling and art history. I also broadened my expertise at the Open University in London, and it was through these combined experiences that I earned my EMMA.",
+        "tags": ["Maya", "After Effects", "Animation", "Storytelling", "Art History"],
+        "details": [
+            {
+                "Platform": "Film, VFX"
+            },
+            {
+                "Software": "Maya & After Effects"
+            },
+            {
+                "Date": "2008-2012"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "video",
+                "src": "assets/projects/hku/Showreel-2010.mp4",
+                "previewTime": 5
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/hku/final_anim.mp4",
+                "previewTime": 1.5
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/hku/circus.mp4",
+                "previewTime": 1.5
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/hku/hku_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/hku/hku_02.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 9,
+        "slug": "jack",
+        "title": "Jack",
+        "imgSrc": "assets/projects/jack/jack_header.jpg",
+        "description": "I created ‘Jack’ as a personal project to measure how much I’d grown in 3D modeling, texturing, rigging, and animation over the course of a year. Starting with a cartoony-yet-realistic concept, I refined the character in Maya, experimented with ZBrush and Mudbox for detailing and texturing, and finally composited multiple renders in After Effects. <br><br>While challenging, especially with hair creation and displacement/normal map workflows, the project was a valuable learning experience that significantly improved my approach to topology, texture painting, and advanced rigging. Read more about it in my <a href='https://curbsider.blogspot.com/2010/08/progress-jack.html' target='_blank'>blog post</a>.",
+        "tags": ["Maya", "After Effects", "Animation", "Texturing", "Rigging", "3D Modeling"],
+        "details": [
+            {
+                "Platform": "Animation"
+            },
+            {
+                "Software": "Autodesk Maya & After Effects"
+            },
+            {
+                "Date": "2010"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/jack/jack_001.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/jack/jack_002.jpg"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/jack/Character_-Jack.mp4",
+                "previewTime": 1.5
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/jack/jack_004.jpg"
+            },
+            {   
+                "type": "image",
+                "src": "assets/projects/jack/jack_005.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/jack/jack_003.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 10,
+        "slug": "kentalis",
+        "title": "Kentalis: Speakaboo",
+        "imgSrc": "assets/projects/kentalis/speakaboo_header.jpg",
+        "demoVideo": "",
+        "description": "Educational tools and applications developed for Kentalis, designed to support communication and learning for people with hearing or communication difficulties.",
+        "details": [
+            {
+                "Platform": "IOS, Android, Windows, OSX"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2016"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/kentalis/speakaboo_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/kentalis/speakaboo_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/kentalis/speakaboo_03.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 11,
+        "slug": "maritiem",
+        "title": "Maritiem",
+        "imgSrc": "assets/projects/maritiem/maritiem_01.jpg",
+        "description": "Interactive exhibits for a maritime museum, allowing visitors to explore naval history, shipbuilding, and maritime culture through digital installations.",
+        "details": [
+            {
+                "Platform": "Installation"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2016"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/maritiem/maritiem_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/maritiem/maritiem_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/maritiem/maritiem_03.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 12,
+        "slug": "nmm",
+        "title": "NMM",
+        "imgSrc": "assets/projects/nmm/nmm_01.jpg",
+        "demoVideo": "assets/projects/nmm/nmm_video.mp4",
+        "description": "Digital installations for the National Military Museum (NMM), bringing military history to life through interactive experiences and visualizations.",
+        "details": [
+            {
+                "Platform": "Installation"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2015"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_02.jpg"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/nmm/nmm_video.mp4",
+                "poster": "assets/projects/nmm/nmm_01.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 13,
+        "slug": "nmmtank",
+        "title": "NMM Tank",
+        "imgSrc": "assets/projects/nmmtank/nmmtank_01.jpg",
+        "demoVideo": "assets/projects/nmmtank/nmmtank_video.mp4",
+        "description": "An interactive tank simulator for the National Military Museum, allowing visitors to experience tank operations and learn about armored warfare.",
+        "details": [
+            {
+                "Platform": "Installation"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2015"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/nmmtank/nmmtank_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmmtank/nmmtank_02.jpg"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/nmmtank/nmmtank_video.mp4",
+                "poster": "assets/projects/nmmtank/nmmtank_01.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 14,
+        "slug": "nsdk",
+        "title": "NSDK",
+        "imgSrc": "assets/projects/nsdk/nsdk_01.jpg",
+        "description": "Software development kit for creating interactive narrative experiences, providing tools for storytellers and developers to build branching storylines.",
+        "details": [
+            {
+                "Platform": "Cross-platform"
+            },
+            {
+                "Software": "C# & JavaScript"
+            },
+            {
+                "Date": "2019"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/nsdk/nsdk_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nsdk/nsdk_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nsdk/nsdk_03.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 15,
+        "slug": "nwo",
+        "title": "NWO",
+        "imgSrc": "assets/projects/nwo/nwo_01.jpg",
+        "demoVideo": "assets/projects/nwo/nwo_video.mp4",
+        "description": "Interactive data visualization platform for the Netherlands Organisation for Scientific Research (NWO), showcasing research projects and scientific discoveries.",
+        "details": [
+            {
+                "Platform": "Web & Installation"
+            },
+            {
+                "Software": "Unity & D3.js"
+            },
+            {
+                "Date": "2018"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/nwo/nwo_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nwo/nwo_02.jpg"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/nwo/nwo_video.mp4",
+                "poster": "assets/projects/nwo/nwo_01.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 16,
+        "slug": "opgejaagd",
+        "title": "Opgejaagd",
+        "imgSrc": "assets/projects/opgejaagd/opgejaagd_01.jpg",
+        "description": "An interactive narrative experience exploring themes of pursuit and escape, with branching storylines that adapt to player choices.",
+        "details": [
+            {
+                "Platform": "Mobile & Web"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2017"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/opgejaagd/opgejaagd_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/opgejaagd/opgejaagd_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/opgejaagd/opgejaagd_03.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 17,
+        "slug": "reykjavik",
+        "title": "Reykjavik",
+        "imgSrc": "assets/projects/reykjavik/reykjavik_01.jpg",
+        "demoVideo": "assets/projects/reykjavik/reykjavik_video.mp4",
+        "description": "Interactive city guide and cultural exploration of Reykjavik, Iceland, featuring virtual tours and information about landmarks and local culture.",
+        "details": [
+            {
+                "Platform": "Web & Mobile"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2016"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/reykjavik/reykjavik_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/reykjavik/reykjavik_02.jpg"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/reykjavik/reykjavik_video.mp4",
+                "poster": "assets/projects/reykjavik/reykjavik_01.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 18,
+        "slug": "scheepvaart",
+        "title": "Scheepvaart",
+        "imgSrc": "assets/projects/scheepvaart/scheepvaart_01.jpg",
+        "description": "Interactive exhibits for a shipping and navigation museum, allowing visitors to explore maritime history and navigation techniques.",
+        "details": [
+            {
+                "Platform": "Installation"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2015"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/scheepvaart/scheepvaart_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/scheepvaart/scheepvaart_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/scheepvaart/scheepvaart_03.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 19,
+        "slug": "schiphol",
+        "title": "Schiphol",
+        "imgSrc": "assets/projects/schiphol/schiphol_01.jpg",
+        "demoVideo": "assets/projects/schiphol/schiphol_video.mp4",
+        "description": "Interactive wayfinding and information system for Amsterdam Schiphol Airport, helping travelers navigate the terminal and access flight information.",
+        "details": [
+            {
+                "Platform": "Installation & Mobile"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2019"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/schiphol/schiphol_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/schiphol/schiphol_02.jpg"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/schiphol/schiphol_video.mp4",
+                "poster": "assets/projects/schiphol/schiphol_01.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 20,
+        "slug": "shosho",
+        "title": "Shosho",
+        "imgSrc": "assets/projects/shosho/shosho_01.jpg",
+        "description": "Interactive showcase of Shosho's creative capabilities, featuring a portfolio of digital installations, applications, and experiences.",
+        "details": [
+            {
+                "Platform": "Web & Installation"
+            },
+            {
+                "Software": "Unity & Web Technologies"
+            },
+            {
+                "Date": "2018"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/shosho_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/shosho_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/shosho_03.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 21,
+        "slug": "tropenmuseum",
+        "title": "Tropenmuseum",
+        "imgSrc": "assets/projects/tropenmuseum/tropenmuseum_01.jpg",
+        "demoVideo": "assets/projects/tropenmuseum/tropenmuseum_video.mp4",
+        "description": "Interactive exhibits for the Tropenmuseum in Amsterdam, exploring world cultures through digital installations and multimedia experiences.",
+        "details": [
+            {
+                "Platform": "Installation"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2017"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/tropenmuseum/tropenmuseum_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/tropenmuseum/tropenmuseum_02.jpg"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/tropenmuseum/tropenmuseum_video.mp4",
+                "poster": "assets/projects/tropenmuseum/tropenmuseum_01.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 22,
+        "slug": "van-gogh",
+        "title": "Van Gogh",
+        "imgSrc": "assets/projects/van gogh/van-gogh_01.jpg",
+        "description": "Interactive exploration of Vincent van Gogh's art and life, allowing visitors to experience his paintings through digital media and learn about his artistic journey.",
+        "details": [
+            {
+                "Platform": "Installation & Mobile"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2018"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/van gogh/van-gogh_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/van gogh/van-gogh_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/van gogh/van-gogh_03.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 23,
+        "slug": "wereldmuseum",
+        "title": "Wereldmuseum",
+        "imgSrc": "assets/projects/wereldmuseum/wereldmuseum_01.jpg",
+        "demoVideo": "assets/projects/wereldmuseum/wereldmuseum_video.mp4",
+        "description": "Interactive exhibits for the Wereldmuseum in Rotterdam, showcasing global cultures and artifacts through digital installations and multimedia experiences.",
+        "details": [
+            {
+                "Platform": "Installation"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2016"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/wereldmuseum/wereldmuseum_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/wereldmuseum/wereldmuseum_02.jpg"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/wereldmuseum/wereldmuseum_video.mp4",
+                "poster": "assets/projects/wereldmuseum/wereldmuseum_01.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 24,
+        "slug": "zuiderzee",
+        "title": "Zuiderzee",
+        "imgSrc": "assets/projects/zuiderzee/zuiderzee_01.jpg",
+        "description": "Interactive exhibits for the Zuiderzee Museum, exploring the cultural history and maritime heritage of the former Zuiderzee region in the Netherlands.",
+        "details": [
+            {
+                "Platform": "Installation"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2015"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/zuiderzee/zuiderzee_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/zuiderzee/zuiderzee_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/zuiderzee/zuiderzee_03.jpg"
+            }
+        ],
+        "codeSnippets": []
     }
 ]
