@@ -5,7 +5,7 @@ function AboutPage() {
     const [activeTab, setActiveTab] = useState('about')
 
     return (
-        <div className="py-8 sm:py-12">
+        <div className="py-8">
             {/* Header with Profile Picture */}
             <div className="mb-8 flex flex-col sm:flex-row items-center gap-6">
                 {/* Profile Picture */}
@@ -19,7 +19,7 @@ function AboutPage() {
                             />
                         </div>
                         {/* Decorative element */}
-                        <div className="absolute -bottom-2 -right-2 w-full h-full border-2 border-green-500/50 rounded-full -z-10"></div>
+                        <div className="absolute -bottom-2 -right-2 w-full h-full border-2 border-accentColor/50 rounded-full -z-10"></div>
                     </div>
                 </div>
                 
@@ -81,7 +81,7 @@ function AboutPage() {
             </div>
 
             {/* Tab Content - Fixed width container to prevent jumping */}
-            <div className="bg-gradient-to-b from-boxColorA to-boxColorA rounded-lg p-4 sm:p-6 min-h-[400px]">
+            <div className="bg-gradient-to-b from-boxColorA to-boxColorA rounded-lg p-4 sm:p-6 ">
                 {/* About Tab */}
                 {activeTab === 'about' && (
                     <div className="w-full">

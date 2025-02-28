@@ -13,6 +13,30 @@ import TagCloud from '../components/TagCloud'
 function Projects() {
     const [activeView, setActiveView] = useState('grid')
     const [selectedTags, setSelectedTags] = useState([])
+    const [isMobile, setIsMobile] = useState(false)
+    
+    // Check if the device is mobile
+    useEffect(() => {
+        const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 640) // sm breakpoint in Tailwind
+        }
+        
+        // Initial check
+        checkIfMobile()
+        
+        // Add event listener for window resize
+        window.addEventListener('resize', checkIfMobile)
+        
+        // Cleanup
+        return () => window.removeEventListener('resize', checkIfMobile)
+    }, [])
+    
+    // Force grid view on mobile
+    useEffect(() => {
+        if (isMobile && activeView === 'list') {
+            setActiveView('grid')
+        }
+    }, [isMobile, activeView])
     
     // Extract all unique tags from projects
     const allTags = useMemo(() => {
@@ -71,20 +95,9 @@ function Projects() {
                 </p>
             </div>
             
-            {/* Tag Cloud */}
-            <div className="mb-8">
-                <h2 className="text-xl font-bold text-white mb-4">Filter by Skills & Categories</h2>
-                <div className="overflow-x-auto pb-2">
-                    <TagCloud 
-                        tags={allTags} 
-                        selectedTags={selectedTags} 
-                        onTagClick={handleTagClick}
-                        projects={projects}
-                    />
-                </div>
-            </div>
+          
             
-            {/* View Selector */}
+            {/* View Selector - Hidden on mobile */}
             <div className="mb-8">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                     <h2 className="text-2xl font-bold text-white">
@@ -92,7 +105,8 @@ function Projects() {
                             ? `Projects (${filteredProjects.length} results)` 
                             : 'Featured Projects'}
                     </h2>
-                    <div className="flex space-x-2 bg-card rounded-md p-1 self-start sm:self-auto">
+                    
+                    <div className="hidden sm:flex space-x-2 bg-card rounded-md p-1 self-start sm:self-auto">
                         <button 
                             className={`px-3 py-1 rounded-md transition-colors ${activeView === 'grid' ? 'bg-black text-white' : 'text-gray-400 hover:text-white'}`}
                             onClick={() => setActiveView('grid')}
@@ -108,7 +122,18 @@ function Projects() {
                     </div>
                 </div>
             </div>
-            
+              {/* Tag Cloud */}
+              <div className="mb-8">
+                <h2 className="text-xl font-bold text-white mb-4">Filter by Skills & Categories</h2>
+                <div className="overflow-x-auto pb-2">
+                    <TagCloud 
+                        tags={allTags} 
+                        selectedTags={selectedTags} 
+                        onTagClick={handleTagClick}
+                        projects={projects}
+                    />
+                </div>
+            </div>
             {/* Projects Display */}
             <div>
                 {filteredProjects.length === 0 ? (
@@ -121,7 +146,7 @@ function Projects() {
                             Clear Filters
                         </button>
                     </div>
-                ) : activeView === 'grid' ? (
+                ) : activeView === 'grid' || isMobile ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                         {filteredProjects.map((project) => (
                             <Link 
