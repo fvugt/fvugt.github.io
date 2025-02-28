@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-function ProjectGalleryFluid({ gallery }) {
+function GalleryFluid({ gallery }) {
     const [activeItem, setActiveItem] = useState(null)
     const [itemDimensions, setItemDimensions] = useState({})
     const videoRefs = useRef({})
@@ -464,4 +464,4 @@ function ProjectGalleryFluid({ gallery }) {
     )
 }
 
-export default ProjectGalleryFluid 
+export default GalleryFluid 

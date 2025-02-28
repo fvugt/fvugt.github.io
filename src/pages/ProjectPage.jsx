@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Banner from '../components/Banner'
 import ProjectDetails from '../components/ProjectDetails'
-import Gallery from '../components/Gallery'
 import MechanicAccordion from '../components/MechanicAccordion'
-import NavigationButtons from '../components/NavigationButtons' 
+import NavigationButtons from '../components/NavigationButtons'
 import projects from '../data/projects.json'
 import TabsShowcase from '../components/TabsShowcase'
 import TimelineShowcase from '../components/TimelineShowcase'
@@ -16,9 +15,12 @@ import ProjectHeaderCard from '../components/ProjectHeaderCard'
 import ProjectHeaderMagazine from '../components/ProjectHeaderMagazine'
 import ProjectHeaderTimeline from '../components/ProjectHeaderTimeline'
 import ProjectHeaderHero from '../components/ProjectHeaderHero'
-import ProjectGalleryGrid from '../components/ProjectGalleryGrid'
-import ProjectGalleryMasonry from '../components/ProjectGalleryMasonry'
-import ProjectGalleryFluid from '../components/ProjectGalleryFluid'
+import GalleryGrid from '../components/GalleryGrid'
+import GalleryFluid from '../components/GalleryFluid'
+import GalleryOneRow from '../components/GalleryOneRow'
+import GalleryCarousel from '../components/GalleryCarousel'
+
+
 function ProjectPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
@@ -55,7 +57,7 @@ function ProjectPage() {
 
   return (
     <div className="relative">
-      <NavigationButtons 
+      <NavigationButtons
         onPrevious={goToPreviousProject}
         onNext={goToNextProject}
         style="side"
@@ -73,16 +75,17 @@ function ProjectPage() {
             {project.codeSnippets && project.codeSnippets.length > 0 && (
               <div className="space-y-4 py-8">
                 <MechanicAccordion snippets={project.codeSnippets} />
-                <TabsShowcase snippets={project.codeSnippets} />  
+                <TabsShowcase snippets={project.codeSnippets} />
                 <TimelineShowcase snippets={project.codeSnippets} />
                 <CarouselShowcase snippets={project.codeSnippets} />
                 <GridShowcase snippets={project.codeSnippets} />
               </div>
             )}
-    
-            {/* <Gallery media={project.gallery} style="grid" /> */}
-            {/* <ProjectGalleryGrid gallery={project.gallery} /> */}
-            <ProjectGalleryFluid gallery={project.gallery} />
+
+            <GalleryOneRow media={project.gallery} style="grid" />
+            <GalleryGrid gallery={project.gallery} />
+            <GalleryFluid gallery={project.gallery} />
+            <GalleryCarousel gallery={project.gallery} />
           </div>
         </div>
       </div>

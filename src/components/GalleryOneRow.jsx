@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ArrowLeft, ArrowRight, X } from 'lucide-react'
 
-function Gallery({ media }) {
+function GalleryOneRow({ media }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedIndex, setSelectedIndex] = useState(null)
 
@@ -188,4 +188,4 @@ function Gallery({ media }) {
   )
 }
 
-export default Gallery
+export default GalleryOneRow

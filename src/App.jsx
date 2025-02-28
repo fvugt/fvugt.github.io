@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Projects from './pages/Projects'
 import AboutPage from './pages/AboutPage'
-import Resume from './pages/Resume'
+import ContactPage from './pages/ContactPage'
 import ProjectPage from './pages/ProjectPage'
 import './App.css'
 import Header from './components/Header'
@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Projects />} />
             <Route path='/about' element={<AboutPage />} />
-            <Route path='/resume' element={<Resume />} />
+            <Route path='/contact' element={<ContactPage />} />
             <Route path='/projects/:slug' element={<ProjectPage />} />
           </Routes>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-function ProjectGalleryGrid({ gallery }) {
+function GalleryGrid({ gallery }) {
     const [activeItem, setActiveItem] = useState(null)
     const [layout, setLayout] = useState([])
     const videoRefs = useRef({})
@@ -251,4 +251,4 @@ function ProjectGalleryGrid({ gallery }) {
     )
 }
 
-export default ProjectGalleryGrid 
+export default GalleryGrid 
