@@ -416,10 +416,10 @@
         "title": "Kentalis: Speakaboo",
         "imgSrc": "assets/projects/kentalis/speakaboo_header.jpg",
         "demoVideo": "",
-        "description": "Educational tools and applications developed for Kentalis, designed to support communication and learning for people with hearing or communication difficulties.",
+        "description": "<a href='https://speakaboo.io' target='_blank'>Speakaboo</a> is an articulation screener created for <a href='https://www.kentalis.nl' target='_blank'>Kentalis</a> to help Speech-Language Pathologists (SLPs) assess speech development in multilingual children using their native language. Through small interactive games, 'Speakaboo' elicits target words that are automatically recorded. After each test, therapists can review these recordings, score them, and compare them to a native speaker’s pronunciation.<br><br>I was responsible for all programming in Unity, covering releases for both Android and iOS and developing the backend.",
         "details": [
             {
-                "Platform": "IOS, Android, Windows, OSX"
+                "Platform": "IOS, Android"
             },
             {
                 "Software": "Unity & C#"
@@ -447,12 +447,13 @@
     {
         "id": 11,
         "slug": "maritiem",
-        "title": "Maritiem",
-        "imgSrc": "assets/projects/maritiem/maritiem_01.jpg",
-        "description": "Interactive exhibits for a maritime museum, allowing visitors to explore naval history, shipbuilding, and maritime culture through digital installations.",
+        "title": "Maritiem Museum Rotterdam",
+        "imgSrc": "assets/projects/maritiem/mmr_header.jpg",
+        "description": "For the <a href='https://maritiemmuseum.nl/en' target='_blank'>Maritime Museum in Rotterdam</a>, we developed several interactive installations for the Offshore Experience exhibition. One installation invites visitors to manipulate valves and discover how oil prices can be affected, while another uses Kinect to teach them how to signal a helicopter for a safe landing. A third installation playfully demonstrates the process of shipbuilding.",
+        "tags": ["Unity", "C#", "Gamification", "Installation"],
         "details": [
             {
-                "Platform": "Installation"
+                "Platform": "Windows"
             },
             {
                 "Software": "Unity & C#"
@@ -464,64 +465,100 @@
         "gallery": [
             {
                 "type": "image",
-                "src": "assets/projects/maritiem/maritiem_01.jpg"
+                "src": "assets/projects/maritiem/mmr_000.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/maritiem/maritiem_02.jpg"
+                "src": "assets/projects/maritiem/mmr_001.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/maritiem/maritiem_03.jpg"
+                "src": "assets/projects/maritiem/mmr_002.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/maritiem/mmr_004.jpg"
             }
+            
+
         ],
         "codeSnippets": []
     },
     {
         "id": 12,
         "slug": "nmm",
-        "title": "NMM",
-        "imgSrc": "assets/projects/nmm/nmm_01.jpg",
-        "demoVideo": "assets/projects/nmm/nmm_video.mp4",
-        "description": "Digital installations for the National Military Museum (NMM), bringing military history to life through interactive experiences and visualizations.",
+        "title": "National Military Museum",
+        "imgSrc": "assets/projects/nmm/nmm_header.jpg",
+        "demoVideo": "",
+        "description": "For the <a href='https://www.nmm.nl/en/' target='_blank'>National Military Museum</a> in Soestdijk, we developed a range of interactive exhibits, for which I handled both setup and programming in Unity.<br><br>“Vriend Vijand” is a series of videos with interactive overlays that allow visitors to delve deeper into each subject. “De Krijgsmacht” presents a hierarchical 3D visualization of every vehicle and unit in the Dutch armed forces. “Strategize” consists of five installations that gamify historical military tactics. <br><br>“The Lab” features an interactive globe (courtesy of Pufferfish) showcasing potential future technologies. “Dilemma’s” offers four interactive film-based stories powered by Unity, and “Quiz” poses questions about the military while the camera moves through a diorama of various army vehicles.",
+        "tags": ["Unity", "C#", "Installation", "Gamification"],
         "details": [
             {
-                "Platform": "Installation"
+                "Platform": "Installation, Windows"
             },
             {
-                "Software": "Unity & C#"
+                "Software": "Unity & C#, SQLite"
             },
             {
-                "Date": "2015"
+                "Date": "2013"
             }
         ],
         "gallery": [
             {
                 "type": "image",
-                "src": "assets/projects/nmm/nmm_01.jpg"
+                "src": "assets/projects/nmm/nmm_001.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/nmm/nmm_02.jpg"
+                "src": "assets/projects/nmm/nmm_002.jpg"
             },
             {
-                "type": "video",
-                "src": "assets/projects/nmm/nmm_video.mp4",
-                "poster": "assets/projects/nmm/nmm_01.jpg"
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_003.jpg"
+            },
+            {   
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_004.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_005.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_006.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_007.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_008.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_009.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmm/nmm_010.jpg"
             }
+                
         ],
         "codeSnippets": []
     },
     {
         "id": 13,
         "slug": "nmmtank",
-        "title": "NMM Tank",
-        "imgSrc": "assets/projects/nmmtank/nmmtank_01.jpg",
-        "demoVideo": "assets/projects/nmmtank/nmmtank_video.mp4",
-        "description": "An interactive tank simulator for the National Military Museum, allowing visitors to experience tank operations and learn about armored warfare.",
+        "title": "NMM Tanktour App",
+        "imgSrc": "assets/projects/nmmtank/nmm_001.jpg",
+        "demoVideo": "",
+        "description": "For the <a href='https://www.nmm.nl/en/' target='_blank'>National Military Museum</a> in Soestdijk, we created two interactive experiences for a temporary exhibition on tanks. One is a tank-building game where visitors can customize their own tank and then test-drive it to assess its performance. The other is an app combining audio interviews with videos, photos, and 360° interior views of the featured tanks, available for download on both the App Store and Google Play.",
+        "tags": ["Unity", "C#", "Gamification", "Installation"],
         "details": [
             {
-                "Platform": "Installation"
+                "Platform": "Android, IOS, Windows"
             },
             {
                 "Software": "Unity & C#"
@@ -533,16 +570,27 @@
         "gallery": [
             {
                 "type": "image",
-                "src": "assets/projects/nmmtank/nmmtank_01.jpg"
+                "src": "assets/projects/nmmtank/nmm_001.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/nmmtank/nmmtank_02.jpg"
+                "src": "assets/projects/nmmtank/nmm_002.jpg"
             },
             {
-                "type": "video",
-                "src": "assets/projects/nmmtank/nmmtank_video.mp4",
-                "poster": "assets/projects/nmmtank/nmmtank_01.jpg"
+                "type": "image",
+                "src": "assets/projects/nmmtank/nmm_003.png"
+            },
+            {   
+                "type": "image",
+                "src": "assets/projects/nmmtank/nmm_004.png"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmmtank/nmm_005.png"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nmmtank/nmmtank_header.jpg"
             }
         ],
         "codeSnippets": []
@@ -550,80 +598,13 @@
     {
         "id": 14,
         "slug": "nsdk",
-        "title": "NSDK",
-        "imgSrc": "assets/projects/nsdk/nsdk_01.jpg",
-        "description": "Software development kit for creating interactive narrative experiences, providing tools for storytellers and developers to build branching storylines.",
+        "title": "NSDK Speelkwartier",
+        "imgSrc": "assets/projects/nsdk/nsdk_header.jpg",
+        "description": "For the <a href='https://www.nsdsk.nl/' target='_blank'>NSDSK</a>, I contributed to a serious game aimed at helping children with autism and hearing disabilities learn to make friends and recognize emotions. My primary responsibility was programming the games in Unity.",
+        "tags": ["Unity", "C#", "Gamification"],
         "details": [
             {
-                "Platform": "Cross-platform"
-            },
-            {
-                "Software": "C# & JavaScript"
-            },
-            {
-                "Date": "2019"
-            }
-        ],
-        "gallery": [
-            {
-                "type": "image",
-                "src": "assets/projects/nsdk/nsdk_01.jpg"
-            },
-            {
-                "type": "image",
-                "src": "assets/projects/nsdk/nsdk_02.jpg"
-            },
-            {
-                "type": "image",
-                "src": "assets/projects/nsdk/nsdk_03.jpg"
-            }
-        ],
-        "codeSnippets": []
-    },
-    {
-        "id": 15,
-        "slug": "nwo",
-        "title": "NWO",
-        "imgSrc": "assets/projects/nwo/nwo_01.jpg",
-        "demoVideo": "assets/projects/nwo/nwo_video.mp4",
-        "description": "Interactive data visualization platform for the Netherlands Organisation for Scientific Research (NWO), showcasing research projects and scientific discoveries.",
-        "details": [
-            {
-                "Platform": "Web & Installation"
-            },
-            {
-                "Software": "Unity & D3.js"
-            },
-            {
-                "Date": "2018"
-            }
-        ],
-        "gallery": [
-            {
-                "type": "image",
-                "src": "assets/projects/nwo/nwo_01.jpg"
-            },
-            {
-                "type": "image",
-                "src": "assets/projects/nwo/nwo_02.jpg"
-            },
-            {
-                "type": "video",
-                "src": "assets/projects/nwo/nwo_video.mp4",
-                "poster": "assets/projects/nwo/nwo_01.jpg"
-            }
-        ],
-        "codeSnippets": []
-    },
-    {
-        "id": 16,
-        "slug": "opgejaagd",
-        "title": "Opgejaagd",
-        "imgSrc": "assets/projects/opgejaagd/opgejaagd_01.jpg",
-        "description": "An interactive narrative experience exploring themes of pursuit and escape, with branching storylines that adapt to player choices.",
-        "details": [
-            {
-                "Platform": "Mobile & Web"
+                "Platform": "Android, IOS"
             },
             {
                 "Software": "Unity & C#"
@@ -635,63 +616,39 @@
         "gallery": [
             {
                 "type": "image",
-                "src": "assets/projects/opgejaagd/opgejaagd_01.jpg"
+                "src": "assets/projects/nsdk/nsdk_001.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/opgejaagd/opgejaagd_02.jpg"
+                "src": "assets/projects/nsdk/nsdk_002.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/opgejaagd/opgejaagd_03.jpg"
+                "src": "assets/projects/nsdk/nsdk_003.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nsdk/nsdk_004.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/nsdk/nsdk_005.jpg"
             }
+         
         ],
         "codeSnippets": []
     },
     {
-        "id": 17,
-        "slug": "reykjavik",
-        "title": "Reykjavik",
-        "imgSrc": "assets/projects/reykjavik/reykjavik_01.jpg",
-        "demoVideo": "assets/projects/reykjavik/reykjavik_video.mp4",
-        "description": "Interactive city guide and cultural exploration of Reykjavik, Iceland, featuring virtual tours and information about landmarks and local culture.",
+        "id": 15,
+        "slug": "nwo",
+        "title": "NWO Mamma Mia",
+        "imgSrc": "assets/projects/nwo/nwo_header.jpg",
+        "demoVideo": "",
+        "description": "Together with the <a href='https://www.uva.nl/en' target='_blank'>University of Amsterdam</a> and Bas Dovis, we aimed to gamify a commonly used short-term memory test, incorporating a reward structure as a key element. The result was ‘Mamma Mia Pizzeria,’ a serious game where Mamma Mia enlists the player’s help to run a restaurant. <br><br>Our biggest challenge was staying faithful to the official test’s rules, ensuring valid scientific comparisons, while making it more engaging through visuals, animations, and an in-game shop that unlocks upgrades over time. I was responsible for programming and development in Unity.",
+        "tags": ["Unity", "C#", "Gamification"],
         "details": [
             {
-                "Platform": "Web & Mobile"
-            },
-            {
-                "Software": "Unity & C#"
-            },
-            {
-                "Date": "2016"
-            }
-        ],
-        "gallery": [
-            {
-                "type": "image",
-                "src": "assets/projects/reykjavik/reykjavik_01.jpg"
-            },
-            {
-                "type": "image",
-                "src": "assets/projects/reykjavik/reykjavik_02.jpg"
-            },
-            {
-                "type": "video",
-                "src": "assets/projects/reykjavik/reykjavik_video.mp4",
-                "poster": "assets/projects/reykjavik/reykjavik_01.jpg"
-            }
-        ],
-        "codeSnippets": []
-    },
-    {
-        "id": 18,
-        "slug": "scheepvaart",
-        "title": "Scheepvaart",
-        "imgSrc": "assets/projects/scheepvaart/scheepvaart_01.jpg",
-        "description": "Interactive exhibits for a shipping and navigation museum, allowing visitors to explore maritime history and navigation techniques.",
-        "details": [
-            {
-                "Platform": "Installation"
+                "Platform": "Windows, Android, IOS"
             },
             {
                 "Software": "Unity & C#"
@@ -703,15 +660,138 @@
         "gallery": [
             {
                 "type": "image",
-                "src": "assets/projects/scheepvaart/scheepvaart_01.jpg"
+                "src": "assets/projects/nwo/nwo_001.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/scheepvaart/scheepvaart_02.jpg"
+                "src": "assets/projects/nwo/nwo_002.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 16,
+        "slug": "opgejaagd",
+        "title": "Opgejaagd",
+        "imgSrc": "assets/projects/opgejaagd/opgejaagd_header.jpg",
+        "description": "‘Opgejaagd’ was a small project that explored creating an interactive storytelling experience in which the app pretended to be someone else’s phone. I worked on emulating a phone within a phone by developing a fake notification system, a fake chat interface, and a fake image gallery. I also focused on creating data structures that would give writers an intuitive, iterative way to craft branching storylines and send attachments through the fictional chat application. Sadly, the project never fully materialized.",
+        "tags": ["Unity", "C#", "Gamification"],
+        "details": [
+            {
+                "Platform": "Android, IOS"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2017"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/opgejaagd/opgejaagd_001.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/scheepvaart/scheepvaart_03.jpg"
+                "src": "assets/projects/opgejaagd/opgejaagd_002.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/opgejaagd/opgejaagd_003.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/opgejaagd/opgejaagd_004.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/opgejaagd/opgejaagd_005.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/opgejaagd/opgejaagd_006.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 17,
+        "slug": "reykjavik",
+        "title": "Reykjavik Maritime Museum",
+        "imgSrc": "assets/projects/reykjavik/ijsland_header.jpg",
+        "demoVideo": "",
+        "description": "For the <a href='https://borgarsogusafn.is/en/reykjavik-maritime-museum' target='_blank'>Reykjavik Maritime Museum</a> and its new 'Fish & Folk' exhibition, we developed several interactive experiences, including an interactive map showcasing historic photos, a memorial honoring fishermen who lost their lives at sea, and a playful multiplayer game where players compete as fish trying to eat one another.",
+        "tags": ["Unity", "C#", "Gamification", "Installation"],
+        "details": [
+            {
+                "Platform": "Windows"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2016"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/reykjavik/ijsland_04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/reykjavik/ijsland_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/reykjavik/ijsland_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/reykjavik/ijsland_04.jpg"
+            },  
+            {
+                "type": "image",
+                "src": "assets/projects/reykjavik/ijsland_05.jpg"
+            }
+        ],
+        "codeSnippets": []
+    },
+    {
+        "id": 18,
+        "slug": "scheepvaart",
+        "title": "Scheepvaart Museum",
+        "imgSrc": "assets/projects/scheepvaart/svm_header.jpg",
+        "description": "For the ‘Dare to Discover’ exhibition at the <a href='https://www.hetscheepvaartmuseum.nl/' target='_blank'>Scheepvaartmuseum</a>, I was responsible for syncing video playback across 27 Gear VR headsets. To achieve this, I developed an app capable of running UHD video at 60 frames per second while simultaneously listening for network commands to maintain perfect synchronization. I also created a separate application that monitors the status of all these headsets.",
+        "tags": ["Unity", "C#", "Installation", "Virtual Reality"],
+        "details": [
+            {
+                "Platform": "Installation, Virtual Reality, GearVR"
+            },
+            {
+                "Software": "Unity & C#"
+            },
+            {
+                "Date": "2017"
+            }
+        ],
+        "gallery": [
+            {
+                "type": "image",
+                "src": "assets/projects/scheepvaart/svm_04.jpeg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/scheepvaart/svm_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/scheepvaart/svm_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/scheepvaart/svm_02.jpg"
             }
         ],
         "codeSnippets": []
@@ -720,15 +800,16 @@
         "id": 19,
         "slug": "schiphol",
         "title": "Schiphol",
-        "imgSrc": "assets/projects/schiphol/schiphol_01.jpg",
-        "demoVideo": "assets/projects/schiphol/schiphol_video.mp4",
-        "description": "Interactive wayfinding and information system for Amsterdam Schiphol Airport, helping travelers navigate the terminal and access flight information.",
+        "imgSrc": "assets/projects/schiphol/schiphol_header.jpg",
+        "demoVideo": "",
+        "description": "Together with <a href='https://www.schiphol.nl/en/' target='_blank'>Schiphol</a> and <a href='https://douwedijkstra.nl/' target='_blank'>Douwe Dijkstra</a> (animator), we created a small interactive installation that showcases iconic Dutch elements like tulips and bicycles, displayed on transparent video screens for an aquarium-like effect. Travelers can touch the screen and send a postcard via email, allowing them to revisit the videos at home. I was responsible for programming the installation in Unity and developing the backend in PHP/MySQL.",
+        "tags": ["Unity", "C#", "Installation", "PHP", "MySQL"],
         "details": [
             {
-                "Platform": "Installation & Mobile"
+                "Platform": "Installation"
             },
             {
-                "Software": "Unity & C#"
+                "Software": "Unity & C#, PHP, MySQL"
             },
             {
                 "Date": "2019"
@@ -738,15 +819,6 @@
             {
                 "type": "image",
                 "src": "assets/projects/schiphol/schiphol_01.jpg"
-            },
-            {
-                "type": "image",
-                "src": "assets/projects/schiphol/schiphol_02.jpg"
-            },
-            {
-                "type": "video",
-                "src": "assets/projects/schiphol/schiphol_video.mp4",
-                "poster": "assets/projects/schiphol/schiphol_01.jpg"
             }
         ],
         "codeSnippets": []
@@ -754,32 +826,101 @@
     {
         "id": 20,
         "slug": "shosho",
-        "title": "Shosho",
-        "imgSrc": "assets/projects/shosho/shosho_01.jpg",
-        "description": "Interactive showcase of Shosho's creative capabilities, featuring a portfolio of digital installations, applications, and experiences.",
+        "title": "Shosho internship",
+        "imgSrc": "assets/projects/shosho/shosho_header.jpg",
+        "description": "During my internship at <a href='https://www.shosho.nl' target='_blank'>Shosho</a>, I worked mainly as a 3D generalist, creating models and animations for a range of projects. It was also where I first started exploring Unity and C#, which ended up being a major turning point in my career. Immersing myself in both artistic and technical work helped me see the bigger picture of interactive development and set me on the path I’m on today.",
+        "tags": ["Unity", "C#", "Installation", "Gamification", "PHP", "MySQL"],
         "details": [
             {
-                "Platform": "Web & Installation"
+                "Platform": "Windows, Android, IOS, OSX, Installation"
             },
             {
-                "Software": "Unity & Web Technologies"
+                "Software": "Unity & C#, Maya"
             },
             {
-                "Date": "2018"
+                "Date": "2008-2012"
             }
         ],
         "gallery": [
             {
-                "type": "image",
-                "src": "assets/projects/shosho/shosho_01.jpg"
+                "type": "video",
+                "src": "assets/projects/shosho/duplo.mp4"
+            },
+            {
+                "type": "video",
+                "src": "assets/projects/shosho/hak.mp4"
             },
             {
                 "type": "image",
-                "src": "assets/projects/shosho/shosho_02.jpg"
+                "src": "assets/projects/shosho/andrelon_02.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/shosho/shosho_03.jpg"
+                "src": "assets/projects/shosho/architect_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/architect_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/architect_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/duplo_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/focus_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/focus_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/focus_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/hak_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/hak_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/kersttrein_01.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/kersttrein_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/random_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/random_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/random_04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/random_05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/shosho/random_07.jpg"
+            },
+            {   
+                "type": "image",
+                "src": "assets/projects/shosho/random_08.jpg"
             }
         ],
         "codeSnippets": []
@@ -787,10 +928,10 @@
     {
         "id": 21,
         "slug": "tropenmuseum",
-        "title": "Tropenmuseum",
-        "imgSrc": "assets/projects/tropenmuseum/tropenmuseum_01.jpg",
-        "demoVideo": "assets/projects/tropenmuseum/tropenmuseum_video.mp4",
-        "description": "Interactive exhibits for the Tropenmuseum in Amsterdam, exploring world cultures through digital installations and multimedia experiences.",
+        "title": "Tropenmuseum: Body Art",
+        "imgSrc": "assets/projects/tropenmuseum/bodyart_header.jpg",
+        "demoVideo": "",
+        "description": "For the Body Art exhibition at the <a href='https://amsterdam.wereldmuseum.nl/en' target='_blank'>Tropenmuseum in Amsterdam</a>, I worked at Shosho to develop an application that prompts visitors to consider the placement and meaning behind tattoos while also teaching them about different styles of body art. My colleague took care of all the 3D assets, which allowed me to focus on the interactive experience itself.",
         "details": [
             {
                 "Platform": "Installation"
@@ -805,17 +946,29 @@
         "gallery": [
             {
                 "type": "image",
-                "src": "assets/projects/tropenmuseum/tropenmuseum_01.jpg"
+                "src": "assets/projects/tropenmuseum/bodyart_01.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/tropenmuseum/tropenmuseum_02.jpg"
+                "src": "assets/projects/tropenmuseum/bodyart_02.jpg"
             },
             {
-                "type": "video",
-                "src": "assets/projects/tropenmuseum/tropenmuseum_video.mp4",
-                "poster": "assets/projects/tropenmuseum/tropenmuseum_01.jpg"
+                "type": "image",
+                "src": "assets/projects/tropenmuseum/bodyart_03.jpg"
+            },
+            {       
+                "type": "image",
+                "src": "assets/projects/tropenmuseum/bodyart_04.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/tropenmuseum/bodyart_05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/tropenmuseum/bodyart_06.jpg"
             }
+                
         ],
         "codeSnippets": []
     },
@@ -823,31 +976,49 @@
         "id": 22,
         "slug": "van-gogh",
         "title": "Van Gogh",
-        "imgSrc": "assets/projects/van gogh/van-gogh_01.jpg",
-        "description": "Interactive exploration of Vincent van Gogh's art and life, allowing visitors to experience his paintings through digital media and learn about his artistic journey.",
+        "imgSrc": "assets/projects/gogh/gogh_01.jpg",
+        "demoVideo": "",
+        "description": "Together with the <a href='https://www.vjacademy.nl/' target='_blank'>VJ Academy</a>, we developed a virtual reality experience for the <a href='https://www.vangoghmuseum.nl/en' target='_blank'>Van Gogh Museum</a> that can be viewed with or without Google Cardboard. Users can explore Van Gogh’s famous ‘The Bedroom’ and step through a door to find themselves in Edvard Munch’s bedroom. <br><br>The VR experience premiered during the opening of an exhibition comparing the two artists’ lives. I handled all Unity and Google Cardboard programming, while my coworker, Ester ten Dam, was responsible for the 3D work. Though it’s no longer available on Android, you can still download it from the <a href='https://apps.apple.com/nl/app/virtual-bedrooms/id1084724660' target='_blank'>Apple App Store</a>.",
+        "tags": ["Unity", "C#", "Installation", "Virtual Reality"],
         "details": [
             {
-                "Platform": "Installation & Mobile"
+                "Platform": "Google Cardboard VR"
             },
             {
                 "Software": "Unity & C#"
             },
             {
-                "Date": "2018"
+                "Date": "2015"
             }
         ],
         "gallery": [
             {
-                "type": "image",
-                "src": "assets/projects/van gogh/van-gogh_01.jpg"
+                "type": "video",
+                "src": "assets/projects/gogh/gogh.mp4"
             },
             {
                 "type": "image",
-                "src": "assets/projects/van gogh/van-gogh_02.jpg"
+                "src": "assets/projects/gogh/gogh_01.jpg"
             },
             {
                 "type": "image",
-                "src": "assets/projects/van gogh/van-gogh_03.jpg"
+                "src": "assets/projects/gogh/gogh_02.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/gogh/gogh_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/gogh/gogh_04.jpg"
+            },
+            {   
+                "type": "image",
+                "src": "assets/projects/gogh/gogh_05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/gogh/gogh_06.jpg"
             }
         ],
         "codeSnippets": []
@@ -855,13 +1026,14 @@
     {
         "id": 23,
         "slug": "wereldmuseum",
-        "title": "Wereldmuseum",
-        "imgSrc": "assets/projects/wereldmuseum/wereldmuseum_01.jpg",
-        "demoVideo": "assets/projects/wereldmuseum/wereldmuseum_video.mp4",
-        "description": "Interactive exhibits for the Wereldmuseum in Rotterdam, showcasing global cultures and artifacts through digital installations and multimedia experiences.",
+        "title": "Wereldmuseum Rotterdam",
+        "imgSrc": "assets/projects/wereldmuseum/wereldmuseum_header.jpg",
+        "demoVideo": "",
+        "description": "‘Our Story,’ an exhibition at the <a href='https://rotterdam.wereldmuseum.nl/en' target='_blank'>Wereldmuseum in Rotterdam</a>, highlights the historic ties between the museum and the city. Showcasing more than 30 objects, we created a set of five touchscreen installations that allow visitors to examine each piece in detail. These interactive displays incorporate high-resolution 3D scans, voiceovers, and videos, offering a playful way to learn about the artifacts. I handled all programming in Unity and set up a Drupal backend for content management.",
+        "tags": ["Unity", "C#", "Installation", "PHP", "MySQL"],
         "details": [
             {
-                "Platform": "Installation"
+                "Platform": "Installation, Windows"
             },
             {
                 "Software": "Unity & C#"
@@ -873,35 +1045,44 @@
         "gallery": [
             {
                 "type": "image",
-                "src": "assets/projects/wereldmuseum/wereldmuseum_01.jpg"
+                "src": "assets/projects/wereldmuseum/wm_01.png"
             },
             {
                 "type": "image",
-                "src": "assets/projects/wereldmuseum/wereldmuseum_02.jpg"
+                "src": "assets/projects/wereldmuseum/wm_02.png"
             },
             {
-                "type": "video",
-                "src": "assets/projects/wereldmuseum/wereldmuseum_video.mp4",
-                "poster": "assets/projects/wereldmuseum/wereldmuseum_01.jpg"
-            }
+                "type": "image",
+                "src": "assets/projects/wereldmuseum/wm_03.png"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/wereldmuseum/wm_04.png"
+            },
+            {   
+                "type": "image",
+                "src": "assets/projects/wereldmuseum/wm_05.jpg"
+            }          
         ],
         "codeSnippets": []
     },
     {
         "id": 24,
         "slug": "zuiderzee",
-        "title": "Zuiderzee",
-        "imgSrc": "assets/projects/zuiderzee/zuiderzee_01.jpg",
-        "description": "Interactive exhibits for the Zuiderzee Museum, exploring the cultural history and maritime heritage of the former Zuiderzee region in the Netherlands.",
+        "title": "Zuiderzee Museum",
+        "imgSrc": "assets/projects/zuiderzee/zuiderzee_header.jpg",
+        "demoVideo": "",
+        "description": "For the <a href='https://www.zuiderzeemuseum.nl/en/klerenmakendevrouw' target='_blank'>Zuiderzee Museum</a>, I was asked to develop a Unity-based game highlighting how labor-intensive laundry was in the past. Co-workers at Shosho handled the asset creation, while I focused on programming both single and multiplayer modes with mini-games for pumping water, dissolving soap, scrubbing, flushing, and wringing. <br><br>A second screen powered by BrightSign provides visual feedback and instructions to guide visitors through each step.",
+        "tags": ["Unity", "C#", "Installation", "Gamification"],
         "details": [
             {
-                "Platform": "Installation"
+                "Platform": "Installation, Windows, BrightSign"
             },
             {
                 "Software": "Unity & C#"
             },
             {
-                "Date": "2015"
+                "Date": "2018"
             }
         ],
         "gallery": [
@@ -916,7 +1097,24 @@
             {
                 "type": "image",
                 "src": "assets/projects/zuiderzee/zuiderzee_03.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/zuiderzee/zuiderzee_04.jpg"
+            },  
+            {
+                "type": "image",
+                "src": "assets/projects/zuiderzee/zuiderzee_05.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/zuiderzee/zuiderzee_06.jpg"
+            },
+            {
+                "type": "image",
+                "src": "assets/projects/zuiderzee/zuiderzee_07.jpg"
             }
+
         ],
         "codeSnippets": []
     }

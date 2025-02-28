@@ -72,7 +72,7 @@ function ProjectGalleryFluid({ gallery }) {
         }
     }
     
-    // Calculate optimal row layout with taller images at the top
+    // Calculate optimal row layout with max width constraint
     const calculateLayout = () => {
         if (!gallery || gallery.length === 0 || Object.keys(itemDimensions).length === 0) {
             return []
@@ -81,93 +81,234 @@ function ProjectGalleryFluid({ gallery }) {
         const containerWidth = containerRef.current?.clientWidth || 1200
         const targetRowHeight = 220
         const spacing = 12
-        const minItemsPerRow = 2 // Try to have at least 2 items per row
+        const maxItemWidth = containerWidth * 0.66 // Max width is 2/3 of container
         
-        // First, identify portrait vs landscape images
-        const portraitImages = []
-        const landscapeImages = []
-        
-        gallery.forEach((item, index) => {
+        // Create a fixed layout based on the number of items
+        const items = gallery.map((item, index) => {
             const aspectRatio = itemDimensions[index]?.aspectRatio || 16/9
-            const scaledWidth = targetRowHeight * aspectRatio
-            
-            const itemData = {
+            return {
                 originalIndex: index,
                 item,
                 aspectRatio,
-                scaledWidth,
+                scaledWidth: targetRowHeight * aspectRatio,
                 height: targetRowHeight
-            }
-            
-            // Consider images with aspect ratio < 1 as portrait
-            if (aspectRatio < 1) {
-                portraitImages.push(itemData)
-            } else {
-                landscapeImages.push(itemData)
             }
         })
         
-        // Sort portrait images by ascending aspect ratio (tallest first)
-        portraitImages.sort((a, b) => a.aspectRatio - b.aspectRatio)
-        
-        // Sort landscape images by ascending aspect ratio (narrowest first)
-        landscapeImages.sort((a, b) => a.aspectRatio - b.aspectRatio)
-        
-        // Combine arrays with portrait images first
-        const sortedItems = [...portraitImages, ...landscapeImages]
-        
-        // Now create rows with the sorted items
-        const rows = []
-        let currentRow = []
-        let currentRowWidth = 0
-        
-        for (let i = 0; i < sortedItems.length; i++) {
-            const itemData = sortedItems[i]
+        // For single item, center it and limit width
+        if (items.length === 1) {
+            const item = items[0]
+            const width = Math.min(maxItemWidth, item.scaledWidth * 1.5)
+            const height = width / item.aspectRatio
             
-            // If adding this item would exceed container width, finalize the row
-            if (currentRowWidth + itemData.scaledWidth > containerWidth && currentRow.length >= minItemsPerRow) {
-                rows.push([...currentRow])
-                currentRow = []
-                currentRowWidth = 0
-            }
-            
-            currentRow.push(itemData)
-            currentRowWidth += itemData.scaledWidth + spacing
-            
-            // Handle the last few items more carefully
-            const remainingItems = sortedItems.length - (i + 1)
-            
-            // If we're at the last item or have only one item remaining, finalize the row
-            if (remainingItems === 0) {
-                // If we have a single item in the last row and it's wide, try to pull up an item from a previous row
-                if (currentRow.length === 1 && currentRow[0].aspectRatio > 1.5 && rows.length > 0) {
-                    // Find the last row with more than 2 items
-                    for (let j = rows.length - 1; j >= 0; j--) {
-                        if (rows[j].length > 2) {
-                            // Pull the last item from that row
-                            const itemToPull = rows[j].pop()
-                            currentRow.unshift(itemToPull)
-                            break
+            // Return a centered item
+            return [[{
+                ...item,
+                width,
+                height,
+                centered: true // Flag for centering
+            }]]
+        }
+        
+        // For 2-5 items, use predefined layouts with width constraints
+        if (items.length <= 5) {
+            switch (items.length) {
+                case 2:
+                    // Two items side by side, each limited to max width
+                    const totalWidth2 = items.reduce((sum, item) => sum + item.scaledWidth, 0)
+                    const ratio2 = (containerWidth - spacing) / totalWidth2
+                    
+                    return [[
+                        { 
+                            ...items[0], 
+                            width: Math.min(maxItemWidth, items[0].scaledWidth * ratio2), 
+                            height: targetRowHeight * ratio2 
+                        },
+                        { 
+                            ...items[1], 
+                            width: Math.min(maxItemWidth, items[1].scaledWidth * ratio2), 
+                            height: targetRowHeight * ratio2 
                         }
-                    }
-                }
+                    ]]
                 
-                rows.push([...currentRow])
+                case 3:
+                    // First row: First item gets 60% width, second gets 40% (both limited)
+                    // Second row: Third item centered and limited
+                    const firstRowWidth = containerWidth - spacing
+                    const firstItemWidth = Math.min(maxItemWidth, firstRowWidth * 0.6)
+                    const secondItemWidth = Math.min(maxItemWidth, firstRowWidth * 0.4)
+                    
+                    const thirdItemWidth = Math.min(maxItemWidth, containerWidth * 0.6)
+                    const thirdItemHeight = thirdItemWidth / items[2].aspectRatio
+                    
+                    return [
+                        [
+                            { 
+                                ...items[0], 
+                                width: firstItemWidth, 
+                                height: targetRowHeight * 1.2
+                            },
+                            { 
+                                ...items[1], 
+                                width: secondItemWidth, 
+                                height: targetRowHeight * 1.2
+                            }
+                        ],
+                        [{ 
+                            ...items[2], 
+                            width: thirdItemWidth, 
+                            height: thirdItemHeight,
+                            centered: true
+                        }]
+                    ]
+                
+                case 4:
+                    // First row: First item gets 60% width, second gets 40% (both limited)
+                    // Second row: Last two side by side (limited)
+                    const firstRowWidth4 = containerWidth - spacing
+                    const firstItemWidth4 = Math.min(maxItemWidth, firstRowWidth4 * 0.6)
+                    const secondItemWidth4 = Math.min(maxItemWidth, firstRowWidth4 * 0.4)
+                    
+                    const totalWidth4 = items[2].scaledWidth + items[3].scaledWidth
+                    const ratio4 = (containerWidth - spacing) / totalWidth4
+                    
+                    return [
+                        [
+                            { 
+                                ...items[0], 
+                                width: firstItemWidth4, 
+                                height: targetRowHeight * 1.2
+                            },
+                            { 
+                                ...items[1], 
+                                width: secondItemWidth4, 
+                                height: targetRowHeight * 1.2
+                            }
+                        ],
+                        [
+                            { 
+                                ...items[2], 
+                                width: Math.min(maxItemWidth, items[2].scaledWidth * ratio4), 
+                                height: targetRowHeight * ratio4 
+                            },
+                            { 
+                                ...items[3], 
+                                width: Math.min(maxItemWidth, items[3].scaledWidth * ratio4), 
+                                height: targetRowHeight * ratio4 
+                            }
+                        ]
+                    ]
+                
+                case 5:
+                    // First row: First item gets 60% width, second gets 40% (both limited)
+                    // Second row: Three items side by side (limited)
+                    const firstRowWidth5 = containerWidth - spacing
+                    const firstItemWidth5 = Math.min(maxItemWidth, firstRowWidth5 * 0.6)
+                    const secondItemWidth5 = Math.min(maxItemWidth, firstRowWidth5 * 0.4)
+                    
+                    const totalWidth5Row2 = items[2].scaledWidth + items[3].scaledWidth + items[4].scaledWidth
+                    const ratio5Row2 = (containerWidth - spacing * 2) / totalWidth5Row2
+                    
+                    return [
+                        [
+                            { 
+                                ...items[0], 
+                                width: firstItemWidth5, 
+                                height: targetRowHeight * 1.2
+                            },
+                            { 
+                                ...items[1], 
+                                width: secondItemWidth5, 
+                                height: targetRowHeight * 1.2
+                            }
+                        ],
+                        [
+                            { 
+                                ...items[2], 
+                                width: Math.min(maxItemWidth, items[2].scaledWidth * ratio5Row2), 
+                                height: targetRowHeight * ratio5Row2 
+                            },
+                            { 
+                                ...items[3], 
+                                width: Math.min(maxItemWidth, items[3].scaledWidth * ratio5Row2), 
+                                height: targetRowHeight * ratio5Row2 
+                            },
+                            { 
+                                ...items[4], 
+                                width: Math.min(maxItemWidth, items[4].scaledWidth * ratio5Row2), 
+                                height: targetRowHeight * ratio5Row2 
+                            }
+                        ]
+                    ]
             }
         }
         
-        // Adjust items in each row to fill the width
-        return rows.map(row => {
-            const totalSpacing = (row.length - 1) * spacing
-            const totalScaledWidth = row.reduce((sum, item) => sum + item.scaledWidth, 0)
+        // For more than 5 items, use a more dynamic approach
+        const rows = []
+        
+        // First row: First item gets 60% width, second gets 40% (both limited)
+        if (items.length > 1) {
+            const firstRowWidth = containerWidth - spacing
+            const firstItemWidth = Math.min(maxItemWidth, firstRowWidth * 0.6)
+            const secondItemWidth = Math.min(maxItemWidth, firstRowWidth * 0.4)
+            
+            rows.push([
+                { 
+                    ...items[0], 
+                    width: firstItemWidth, 
+                    height: targetRowHeight * 1.2
+                },
+                { 
+                    ...items[1], 
+                    width: secondItemWidth, 
+                    height: targetRowHeight * 1.2
+                }
+            ])
+        }
+        
+        // Remaining items are laid out in rows of 2-3 items
+        let currentRow = []
+        let currentRowWidth = 0
+        
+        for (let i = 2; i < items.length; i++) {
+            const item = items[i]
+            
+            // If adding this item would exceed container width or we already have 3 items, finalize the row
+            if (currentRowWidth + item.scaledWidth > containerWidth || currentRow.length >= 3) {
+                if (currentRow.length > 0) {
+                    const totalSpacing = (currentRow.length - 1) * spacing
+                    const totalScaledWidth = currentRow.reduce((sum, item) => sum + item.scaledWidth, 0)
+                    const ratio = (containerWidth - totalSpacing) / totalScaledWidth
+                    
+                    rows.push(currentRow.map(item => ({
+                        ...item,
+                        width: Math.min(maxItemWidth, item.scaledWidth * ratio),
+                        height: item.height * ratio
+                    })))
+                    
+                    currentRow = []
+                    currentRowWidth = 0
+                }
+            }
+            
+            currentRow.push(item)
+            currentRowWidth += item.scaledWidth + spacing
+        }
+        
+        // Add the last row if it has items
+        if (currentRow.length > 0) {
+            const totalSpacing = (currentRow.length - 1) * spacing
+            const totalScaledWidth = currentRow.reduce((sum, item) => sum + item.scaledWidth, 0)
             const ratio = (containerWidth - totalSpacing) / totalScaledWidth
             
-            return row.map(item => ({
+            rows.push(currentRow.map(item => ({
                 ...item,
-                width: item.scaledWidth * ratio,
+                width: Math.min(maxItemWidth, item.scaledWidth * ratio),
                 height: item.height * ratio
-            }))
-        })
+            })))
+        }
+        
+        return rows
     }
     
     const rows = calculateLayout()
@@ -205,15 +346,16 @@ function ProjectGalleryFluid({ gallery }) {
             {/* Fluid Gallery Layout */}
             <div className="space-y-3">
                 {rows.map((row, rowIndex) => (
-                    <div key={rowIndex} className="flex gap-3">
-                        {row.map(({ originalIndex, width, height, item }) => (
+                    <div key={rowIndex} className="flex gap-3 justify-center">
+                        {row.map(({ originalIndex, width, height, item, centered }) => (
                             <div 
                                 key={originalIndex}
                                 className="relative rounded-md overflow-hidden cursor-pointer group"
                                 style={{ 
                                     width: `${width}px`, 
                                     height: `${height}px`,
-                                    flexShrink: 0
+                                    flexShrink: 0,
+                                    margin: centered ? '0 auto' : undefined
                                 }}
                                 onClick={() => handleItemClick(originalIndex)}
                                 onMouseEnter={() => item.type === 'video' && handleVideoHover(originalIndex, true)}
