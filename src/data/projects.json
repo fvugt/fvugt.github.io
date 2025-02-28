@@ -13,9 +13,9 @@
             },
             {
                 "Platforms": "Windows, OSX"
-            },
+            },          
             {
-                "Teamsize": "3"
+                "Employer": "Shosho"
             },
             {
                 "Date": "2015"
@@ -69,7 +69,7 @@
                 "Platforms": "iOS, Android, Windows"
             },
             {
-                "Teamsize": "3"
+                "Employer": "Shosho"
             },
             {
                 "Date": "2018"
@@ -161,6 +161,9 @@
                 "Platforms": "Windows, Linux, Android"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2013"
             }
         ],
@@ -199,6 +202,9 @@
             },
             {
                 "Software": "Unity, C#, PHP, SQL"
+            },
+            {
+                "Employer": "Shosho"
             },
             {
                 "Date": "2017"
@@ -248,6 +254,9 @@
                 "Software": "Unity & C#, Drupal"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2016"
             }
         ],
@@ -294,6 +303,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2019"
             }
         ],
@@ -331,6 +343,9 @@
             },
             {
                 "Software": "Maya & After Effects"
+            },
+            {
+                "Employer": "HKU"
             },
             {
                 "Date": "2008-2012"
@@ -425,6 +440,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Kentalis"
+            },
+            {
                 "Date": "2016"
             }
         ],
@@ -457,6 +475,9 @@
             },
             {
                 "Software": "Unity & C#"
+            },
+            {
+                "Employer": "Shosho"
             },
             {
                 "Date": "2016"
@@ -498,6 +519,9 @@
             },
             {
                 "Software": "Unity & C#, SQLite"
+            },
+            {
+                "Employer": "Shosho"
             },
             {
                 "Date": "2013"
@@ -564,6 +588,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2015"
             }
         ],
@@ -610,6 +637,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2017"
             }
         ],
@@ -654,6 +684,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2015"
             }
         ],
@@ -682,6 +715,9 @@
             },
             {
                 "Software": "Unity & C#"
+            },
+            {
+                "Employer": "Shosho"
             },
             {
                 "Date": "2017"
@@ -731,6 +767,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2016"
             }
         ],
@@ -773,6 +812,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2017"
             }
         ],
@@ -812,6 +854,9 @@
                 "Software": "Unity & C#, PHP, MySQL"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2019"
             }
         ],
@@ -836,6 +881,9 @@
             },
             {
                 "Software": "Unity & C#, Maya"
+            },
+            {
+                "Employer": "Shosho"
             },
             {
                 "Date": "2008-2012"
@@ -940,6 +988,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2017"
             }
         ],
@@ -986,6 +1037,9 @@
             },
             {
                 "Software": "Unity & C#"
+            },
+            {
+                "Employer": "Shosho"
             },
             {
                 "Date": "2015"
@@ -1039,6 +1093,9 @@
                 "Software": "Unity & C#"
             },
             {
+                "Employer": "Shosho"
+            },
+            {
                 "Date": "2016"
             }
         ],
@@ -1080,6 +1137,9 @@
             },
             {
                 "Software": "Unity & C#"
+            },
+            {
+                "Employer": "Shosho"
             },
             {
                 "Date": "2018"
