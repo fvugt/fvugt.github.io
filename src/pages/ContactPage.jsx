@@ -39,34 +39,34 @@ function ContactPage() {
     };
 
     return (
-        <div className="py-8 sm:py-12">
+        <div className="py-8 sm:py-12 min-h-[calc(100vh-200px)]">
 
-            <div className="max-w-4xl mx-auto">
-                {/* Profile and Bio Section */}
-                <div className="bg-gradient-to-b from-boxColorA to-boxColorB rounded-lg p-6 mb-8">
-                    <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-                        {/* Profile Picture */}
+            <div className="w-full mx-auto">
+                {/* Header with Profile Picture */}
+                <div className="mb-8 flex flex-col sm:flex-row items-center gap-6">
+                    {/* Profile Picture */}
+                    <div className="flex-shrink-0">
                         <div className="relative">
-                            <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-accentColor">
-                                <img
-                                    src={aboutData.profilePicture}
-                                    alt={name}
+                            <div className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] overflow-hidden rounded-full border-2 border-white/10">
+                                <img 
+                                    src={`${import.meta.env.BASE_URL}${aboutData.profilePicture}`} 
+                                    alt="Profile" 
                                     className="w-full h-full object-cover"
                                 />
                             </div>
-                            <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-accentColor rounded-full flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                </svg>
-                            </div>
+                            {/* Decorative element */}
+                            <div className="absolute -bottom-2 -right-2 w-full h-full border-2 border-green-500/50 rounded-full -z-10"></div>
                         </div>
-
-                        {/* Bio */}
-                        <div className="flex-1 text-center md:text-left">
-                            <h2 className="text-2xl font-bold text-white mb-2">{name}</h2>
-                            <h3 className="text-gray-300 text-lg mb-4">{aboutData.title}</h3>
-                            <p className="text-gray-300">{shortBio}</p>
-                        </div>
+                    </div>
+                    
+                    {/* Title */}
+                    <div className="text-center sm:text-left">
+                        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-white">
+                            {name}
+                        </h1>
+                        <p className="text-lg text-gray-300">
+                            {aboutData.title}
+                        </p>
                     </div>
                 </div>
 

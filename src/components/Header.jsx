@@ -35,7 +35,7 @@ function Header() {
                 <div className="flex items-center justify-between py-4">
                     {/* Logo - Now using name from about.json */}
                     <Link to="/" className="text-white font-bold text-xl ml-4">
-                        {aboutData.name}
+                        {aboutData.websiteTitle}
                     </Link>
 
                     {/* Desktop Navigation */}
