@@ -8,6 +8,9 @@ function GalleryCarousel({ gallery }) {
     const [videosLoaded, setVideosLoaded] = useState({})
     const carouselRef = useRef(null)
     const [isTransitioning, setIsTransitioning] = useState(false)
+    const timerRef = useRef(null) // Reference to store the timer
+    const modalVideoRef = useRef(null) // Reference for the video in the modal
+    const [isZoomed, setIsZoomed] = useState(false) // State to track zoom level
     
     // Load and store image dimensions
     useEffect(() => {
@@ -80,10 +83,30 @@ function GalleryCarousel({ gallery }) {
 
     const handleItemClick = (index) => {
         setActiveItem(index)
+        setIsZoomed(false) // Reset zoom state when opening a new item
     }
 
     const closeModal = () => {
-        setActiveItem(null)
+        // Pause the video in the modal before closing
+        if (modalVideoRef.current) {
+            modalVideoRef.current.pause();
+        }
+        
+        // Also pause any videos that might be playing in the carousel
+        Object.values(videoRefs.current).forEach(videoRef => {
+            if (videoRef) {
+                videoRef.pause();
+            }
+        });
+        
+        setActiveItem(null);
+        setIsZoomed(false); // Reset zoom state when closing modal
+    }
+    
+    // Toggle zoom state when clicking on an image in fullscreen
+    const toggleZoom = (e) => {
+        e.stopPropagation(); // Prevent modal from closing
+        setIsZoomed(!isZoomed);
     }
     
     const handleVideoHover = (index, isHovering) => {
@@ -100,37 +123,60 @@ function GalleryCarousel({ gallery }) {
         }
     }
 
+    const resetCarouselTimer = () => {
+        // Clear the existing timer
+        if (timerRef.current) {
+            clearInterval(timerRef.current)
+        }
+        
+        // Set a new timer
+        timerRef.current = setInterval(() => {
+            if (!activeItem) {
+                goToNext()
+            }
+        }, 5000)
+    }
+
     const goToNext = () => {
         if (isTransitioning) return
         setIsTransitioning(true)
         setCurrentIndex((prevIndex) => (prevIndex + 1) % gallery.length)
         setTimeout(() => setIsTransitioning(false), 500)
+        resetCarouselTimer() // Reset timer when manually going to next
     }
 
     const goToPrev = () => {
         if (isTransitioning) return
         setIsTransitioning(true)
         setCurrentIndex((prevIndex) => (prevIndex - 1 + gallery.length) % gallery.length)
-        setTimeout(() => setIsTransitioning(false), 500)
+        setTimeout(() => setIsTransitioning(false), 700)
+        resetCarouselTimer() // Reset timer when manually going to previous
     }
 
-    // Auto-advance carousel
+    // Set up the initial timer
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (!activeItem) {
-                goToNext()
-            }
-        }, 5000)
+        resetCarouselTimer()
         
-        return () => clearInterval(interval)
+        // Clean up the timer when component unmounts
+        return () => {
+            if (timerRef.current) {
+                clearInterval(timerRef.current)
+            }
+        }
     }, [activeItem])
 
     return (
-        <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white">Project Gallery</h2>
+        <div className="space-y-8">
+            
+            {/* Horizontal divider line */}
+            <h2 className="text-2xl font-bold text-white">Images & Videos</h2>
             
             {/* Carousel Gallery Layout */}
-            <div className="relative overflow-hidden rounded-lg" style={{ height: '500px' }} ref={carouselRef}>
+            <div 
+                className="relative overflow-hidden rounded-lg" 
+                style={{ height: '400px' }} 
+                ref={carouselRef}
+            >
                 <div className="absolute inset-0 flex items-center justify-center">
                     {gallery.map((item, index) => (
                         <div 
@@ -155,7 +201,7 @@ function GalleryCarousel({ gallery }) {
                                             muted
                                             playsInline
                                             loop
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-contain"
                                             onLoadedData={() => handleVideoLoaded(index)}
                                             style={{ opacity: videosLoaded[index] ? 1 : 0 }}
                                         />
@@ -174,14 +220,9 @@ function GalleryCarousel({ gallery }) {
                                     <img 
                                         src={`${import.meta.env.BASE_URL}${item.src}`} 
                                         alt={`Gallery item ${index + 1}`}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-contain"
                                     />
                                 )}
-                                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                                    <p className="text-white text-lg font-semibold">
-                                        {`Image ${index + 1} of ${gallery.length}`}
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     ))}
@@ -210,40 +251,34 @@ function GalleryCarousel({ gallery }) {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
-                
-                {/* Indicators */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
-                    {gallery.map((_, index) => (
-                        <button
-                            key={index}
-                            className={`w-2 h-2 rounded-full transition-all ${
-                                index === currentIndex ? 'bg-white w-4' : 'bg-white/50'
-                            }`}
-                            onClick={(e) => {
-                                e.stopPropagation()
-                                setCurrentIndex(index)
-                            }}
-                        />
-                    ))}
-                </div>
             </div>
             
             {/* Thumbnails */}
-            <div className="flex overflow-x-auto space-x-2 py-2 scrollbar-hide">
+            <div className="flex justify-center overflow-x-auto space-x-2 py-2 w-full scrollbar-hide">
                 {gallery.map((item, index) => (
                     <div 
                         key={index}
-                        className={`flex-shrink-0 w-20 h-20 cursor-pointer rounded-md overflow-hidden border-2 transition-all ${
+                        className={`flex-shrink-0 w-20 h-20 cursor-pointer rounded-md overflow-hidden border-2 transition-all relative ${
                             index === currentIndex ? 'border-white' : 'border-transparent'
                         }`}
-                        onClick={() => setCurrentIndex(index)}
+                        onClick={() => {
+                            setCurrentIndex(index)
+                            resetCarouselTimer() // Reset timer when clicking on thumbnail
+                        }}
                     >
                         {item.type === 'video' ? (
-                            <video 
-                                src={`${import.meta.env.BASE_URL}${item.src}`}
-                                className="w-full h-full object-cover"
-                                muted
-                            />
+                            <>
+                                <video 
+                                    src={`${import.meta.env.BASE_URL}${item.src}`}
+                                    className="w-full h-full object-cover"
+                                    muted
+                                />
+                                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                            </>
                         ) : (
                             <img 
                                 src={`${import.meta.env.BASE_URL}${item.src}`} 
@@ -257,63 +292,88 @@ function GalleryCarousel({ gallery }) {
 
             {/* Modal */}
             {activeItem !== null && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90" onClick={closeModal}>
-                    <div className="relative max-w-4xl max-h-[90vh] w-full" onClick={e => e.stopPropagation()}>
-                        {gallery[activeItem].type === 'video' ? (
+                <div className="fixed inset-0 z-50 bg-black/95" onClick={closeModal}>
+                    {gallery[activeItem].type === 'video' ? (
+                        <div className="absolute inset-0 flex items-center justify-center">
                             <video 
+                                ref={modalVideoRef}
                                 src={`${import.meta.env.BASE_URL}${gallery[activeItem].src}`}
                                 controls
                                 autoPlay
-                                className="w-full h-full object-contain"
+                                className="w-auto h-auto max-w-screen max-h-screen"
+                                style={{ maxWidth: "calc(100vw - 40px)", maxHeight: "calc(100vh - 80px)" }}
+                                onEnded={() => {
+                                    if (modalVideoRef.current) {
+                                        modalVideoRef.current.pause();
+                                    }
+                                }}
                             />
-                        ) : (
+                        </div>
+                    ) : (
+                        <div className={`absolute inset-0 flex items-center justify-center ${isZoomed ? 'overflow-auto cursor-zoom-out' : 'cursor-zoom-in'}`}>
                             <img 
                                 src={`${import.meta.env.BASE_URL}${gallery[activeItem].src}`} 
                                 alt={`Gallery item ${activeItem + 1}`}
-                                className="w-full h-full object-contain"
+                                className={isZoomed ? "w-auto h-auto" : "w-auto h-auto max-w-screen max-h-screen"}
+                                style={isZoomed 
+                                    ? { transform: "scale(1.5)", transformOrigin: "center", cursor: "zoom-out" } 
+                                    : { maxWidth: "calc(100vw - 40px)", maxHeight: "calc(100vh - 80px)", cursor: "zoom-in" }
+                                }
+                                onClick={toggleZoom}
                             />
-                        )}
-                        
-                        {/* Navigation */}
-                        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex justify-between px-4">
-                            <button 
-                                className="bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
-                                onClick={(e) => {
-                                    e.stopPropagation()
-                                    setActiveItem((activeItem - 1 + gallery.length) % gallery.length)
-                                }}
-                            >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button 
-                                className="bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
-                                onClick={(e) => {
-                                    e.stopPropagation()
-                                    setActiveItem((activeItem + 1) % gallery.length)
-                                }}
-                            >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
                         </div>
-                        
-                        {/* Close button */}
+                    )}
+                    
+                    {/* Navigation */}
+                    <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex justify-between px-4">
                         <button 
-                            className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
-                            onClick={closeModal}
+                            className="bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (modalVideoRef.current) {
+                                    modalVideoRef.current.pause();
+                                }
+                                setActiveItem((activeItem - 1 + gallery.length) % gallery.length);
+                                setIsZoomed(false); // Reset zoom when changing images
+                            }}
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
                         </button>
-                        
-                        {/* Image counter */}
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
-                            {activeItem + 1} / {gallery.length}
-                        </div>
+                        <button 
+                            className="bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (modalVideoRef.current) {
+                                    modalVideoRef.current.pause();
+                                }
+                                setActiveItem((activeItem + 1) % gallery.length);
+                                setIsZoomed(false); // Reset zoom when changing images
+                            }}
+                        >
+                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    {/* Close button */}
+                    <button 
+                        className="absolute top-4 right-4 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors z-10"
+                        onClick={closeModal}
+                    >
+                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    
+                    {/* Image counter and zoom instructions */}
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-base z-10 flex flex-col items-center">
+                        <div>{activeItem + 1} / {gallery.length}</div>
+                        {gallery[activeItem].type === 'image' && (
+                            <div className="text-sm mt-1 opacity-80">Click image to {isZoomed ? 'zoom out' : 'zoom in'}</div>
+                        )}
                     </div>
                 </div>
             )}

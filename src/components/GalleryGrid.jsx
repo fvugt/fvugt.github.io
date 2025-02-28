@@ -1,248 +1,131 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function GalleryGrid({ gallery }) {
     const [activeItem, setActiveItem] = useState(null)
-    const [layout, setLayout] = useState([])
-    const videoRefs = useRef({})
-    const [videosLoaded, setVideosLoaded] = useState({})
-    
-    useEffect(() => {
-        if (!gallery || gallery.length === 0) return
-        
-        // Create a dynamic layout based on the number of items
-        const generateLayout = () => {
-            const itemCount = gallery.length
-            
-            // For 1 item: full width
-            if (itemCount === 1) {
-                return [{ span: 'col-span-12', items: [0] }]
-            }
-            
-            // For 2 items: two equal columns
-            if (itemCount === 2) {
-                return [{ span: 'col-span-6', items: [0] }, { span: 'col-span-6', items: [1] }]
-            }
-            
-            // For 3 items: one large, two small
-            if (itemCount === 3) {
-                return [
-                    { span: 'col-span-12 md:col-span-8', items: [0] },
-                    { span: 'col-span-6 md:col-span-4', items: [1] },
-                    { span: 'col-span-6 md:col-span-4', items: [2] }
-                ]
-            }
-            
-            // For 4 items: 2x2 grid
-            if (itemCount === 4) {
-                return [
-                    { span: 'col-span-6', items: [0] },
-                    { span: 'col-span-6', items: [1] },
-                    { span: 'col-span-6', items: [2] },
-                    { span: 'col-span-6', items: [3] }
-                ]
-            }
-            
-            // For 5 items: feature + 2x2 grid
-            if (itemCount === 5) {
-                return [
-                    { span: 'col-span-12', items: [0] },
-                    { span: 'col-span-6 md:col-span-3', items: [1] },
-                    { span: 'col-span-6 md:col-span-3', items: [2] },
-                    { span: 'col-span-6 md:col-span-3', items: [3] },
-                    { span: 'col-span-6 md:col-span-3', items: [4] }
-                ]
-            }
-            
-            // For 6+ items: create a dynamic grid with varying column spans
-            const result = []
-            
-            // First row: feature item + one regular
-            result.push({ span: 'col-span-12 md:col-span-8', items: [0] })
-            result.push({ span: 'col-span-12 md:col-span-4', items: [1] })
-            
-            // Remaining items in a 3-column grid (on desktop)
-            const remaining = itemCount - 2
-            for (let i = 0; i < remaining; i++) {
-                // Alternate between different column spans for visual interest
-                let span = 'col-span-6 md:col-span-4'
-                if (i % 5 === 0) span = 'col-span-12 md:col-span-6' // Occasional wider item
-                if (i % 7 === 0) span = 'col-span-12' // Occasional full-width item
-                
-                result.push({ span, items: [i + 2] })
-            }
-            
-            return result
+    const [loadedVideos, setLoadedVideos] = useState({})
+    const baseUrl = import.meta.env.BASE_URL || ''
+
+    // Function to get the correct path for images and videos
+    const getImagePath = (path) => {
+        if (path.startsWith('http') || path.startsWith('/')) {
+            return path
         }
-        
-        setLayout(generateLayout())
-        
-        // Initialize video refs
-        gallery.forEach((item, index) => {
-            if (item.type === 'video') {
-                videoRefs.current[index] = videoRefs.current[index] || React.createRef()
-            }
-        })
-    }, [gallery])
-
-    // Set preview frame when video is loaded
-    const handleVideoLoaded = (index) => {
-        const videoRef = videoRefs.current[index]
-        if (videoRef) {
-            // Set to the specified preview time or a default time
-            const previewTime = gallery[index].previewTime || 1.5
-            videoRef.currentTime = previewTime
-            
-            // Mark this video as loaded with its preview frame set
-            setVideosLoaded(prev => ({
-                ...prev,
-                [index]: true
-            }))
-        }
+        return `${baseUrl}${path}`
     }
 
-    if (!gallery || gallery.length === 0) {
-        return null
+    // Handle video loading
+    const handleVideoLoad = (index) => {
+        setLoadedVideos(prev => ({
+            ...prev,
+            [index]: true
+        }))
     }
 
-    const handleItemClick = (index) => {
-        setActiveItem(index)
+    // Handle item click
+    const handleItemClick = (item) => {
+        setActiveItem(item)
+        document.body.style.overflow = 'hidden'
     }
 
+    // Close modal
     const closeModal = () => {
         setActiveItem(null)
-    }
-    
-    const handleVideoHover = (index, isHovering) => {
-        const videoRef = videoRefs.current[index]
-        if (videoRef) {
-            if (isHovering) {
-                videoRef.play().catch(e => console.log('Auto-play prevented:', e))
-            } else {
-                videoRef.pause()
-                // Reset to preview frame
-                const previewTime = gallery[index].previewTime || 1.5
-                videoRef.currentTime = previewTime
-            }
-        }
+        document.body.style.overflow = 'auto'
     }
 
+    // Close modal when Escape key is pressed
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') closeModal()
+        }
+        window.addEventListener('keydown', handleEsc)
+        return () => {
+            window.removeEventListener('keydown', handleEsc)
+            document.body.style.overflow = 'auto'
+        }
+    }, [])
+
     return (
-        <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white">Project Gallery</h2>
-            
-            {/* Gallery Grid */}
-            <div className="grid grid-cols-12 gap-4">
-                {layout.map((section, sectionIndex) => (
+        <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {gallery.map((item, index) => (
                     <div 
-                        key={sectionIndex}
-                        className={`${section.span} relative rounded-lg overflow-hidden`}
+                        key={index} 
+                        className="relative group cursor-pointer overflow-hidden rounded-lg bg-backgroundBColor"
+                        onClick={() => handleItemClick(item)}
                     >
-                        {section.items.map(itemIndex => {
-                            const item = gallery[itemIndex]
-                            return (
-                                <div 
-                                    key={itemIndex}
-                                    className="relative aspect-[16/9] rounded-lg overflow-hidden cursor-pointer group h-full"
-                                    onClick={() => handleItemClick(itemIndex)}
-                                    onMouseEnter={() => item.type === 'video' && handleVideoHover(itemIndex, true)}
-                                    onMouseLeave={() => item.type === 'video' && handleVideoHover(itemIndex, false)}
-                                >
-                                    {item.type === 'video' ? (
-                                        <>
-                                            <video 
-                                                ref={el => videoRefs.current[itemIndex] = el}
-                                                src={`${import.meta.env.BASE_URL}${item.src}`}
-                                                muted
-                                                playsInline
-                                                loop
-                                                className="w-full h-full object-cover"
-                                                onLoadedData={() => handleVideoLoaded(itemIndex)}
-                                                style={{ opacity: videosLoaded[itemIndex] ? 1 : 0 }}
-                                            />
-                                            {!videosLoaded[itemIndex] && (
-                                                <div className="absolute inset-0 flex items-center justify-center bg-bg-secondary">
-                                                    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-                                                </div>
-                                            )}
-                                            <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                                                </svg>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <img 
-                                            src={`${import.meta.env.BASE_URL}${item.src}`} 
-                                            alt={`Gallery item ${itemIndex + 1}`}
-                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                        />
-                                    )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </div>
-                            )
-                        })}
+                        {item.type === 'video' ? (
+                            <div className="aspect-video relative">
+                                <video
+                                    src={getImagePath(item.src)}
+                                    className="w-full h-full object-cover"
+                                    muted
+                                    loop
+                                    playsInline
+                                    onLoadedData={() => handleVideoLoad(index)}
+                                    onMouseEnter={(e) => e.target.play()}
+                                    onMouseLeave={(e) => e.target.pause()}
+                                />
+                                {!loadedVideos[index] && (
+                                    <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                                        <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="aspect-video relative">
+                                <img
+                                    src={getImagePath(item.src)}
+                                    alt={item.caption || `Gallery item ${index + 1}`}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            </div>
+                        )}
+                        
+                        {/* Caption Overlay */}
+                        {item.caption && (
+                            <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                                <p className="text-white text-center">{item.caption}</p>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
 
             {/* Modal */}
-            {activeItem !== null && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90" onClick={closeModal}>
-                    <div className="relative max-w-4xl max-h-[90vh] w-full" onClick={e => e.stopPropagation()}>
-                        {gallery[activeItem].type === 'video' ? (
-                            <video 
-                                src={`${import.meta.env.BASE_URL}${gallery[activeItem].src}`}
-                                controls
-                                autoPlay
-                                className="w-full h-full object-contain"
-                            />
-                        ) : (
-                            <img 
-                                src={`${import.meta.env.BASE_URL}${gallery[activeItem].src}`} 
-                                alt={`Gallery item ${activeItem + 1}`}
-                                className="w-full h-full object-contain"
-                            />
-                        )}
-                        
-                        {/* Navigation */}
-                        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex justify-between px-4">
-                            <button 
-                                className="bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
-                                onClick={(e) => {
-                                    e.stopPropagation()
-                                    setActiveItem((activeItem - 1 + gallery.length) % gallery.length)
-                                }}
-                            >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button 
-                                className="bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
-                                onClick={(e) => {
-                                    e.stopPropagation()
-                                    setActiveItem((activeItem + 1) % gallery.length)
-                                }}
-                            >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                        
-                        {/* Close button */}
+            {activeItem && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90" onClick={closeModal}>
+                    <div className="relative max-w-4xl w-full max-h-[90vh] overflow-auto" onClick={(e) => e.stopPropagation()}>
                         <button 
-                            className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                            className="absolute top-4 right-4 z-10 bg-black/50 text-white p-2 rounded-full hover:bg-black/80 transition-colors"
                             onClick={closeModal}
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                         
-                        {/* Image counter */}
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
-                            {activeItem + 1} / {gallery.length}
+                        <div className="bg-backgroundBColor rounded-lg overflow-hidden">
+                            {activeItem.type === 'video' ? (
+                                <video
+                                    src={getImagePath(activeItem.src)}
+                                    className="w-full h-auto"
+                                    controls
+                                    autoPlay
+                                />
+                            ) : (
+                                <img
+                                    src={getImagePath(activeItem.src)}
+                                    alt={activeItem.caption || 'Gallery item'}
+                                    className="w-full h-auto"
+                                />
+                            )}
+                            
+                            {activeItem.caption && (
+                                <div className="p-4">
+                                    <p className="text-white">{activeItem.caption}</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

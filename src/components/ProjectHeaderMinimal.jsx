@@ -78,7 +78,7 @@ function ProjectHeaderMinimal({ projectData }) {
             {/* Split Banner */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-[400px]">
                 {/* Left: Title & Description */}
-                <div className="bg-backgroundBColor rounded-lg p-8 flex flex-col justify-between">
+                <div className="bg-gradient-to-b from-boxColorA to-boxColorB rounded-lg p-8 flex flex-col justify-between">
                     <div>
                         <h1 className="text-4xl font-bold text-white mb-6">
                             {title}

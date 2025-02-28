@@ -1,94 +1,236 @@
-import React from 'react'
-import AboutMinimal from '../components/AboutMinimal'
-import AboutCards from '../components/AboutCards'
-import AboutMagazine from '../components/AboutMagazine'     
-import AboutTimeline from '../components/AboutTimeline'
-import AboutResume from '../components/AboutResume'
-import AboutTimelineCompact from '../components/AboutTimelineCompact'
+import React, { useState } from 'react'
+import aboutData from '../data/about.json'
 
 function AboutPage() {
+    const [activeTab, setActiveTab] = useState('about')
+
     return (
-        <div className="container mx-auto px-4 py-16">
-            <AboutMinimal />
-            <AboutCards />
-            <AboutMagazine />
-            <AboutTimeline />
-            <AboutResume />
-            <AboutTimelineCompact />
-            <div className="max-w-6xl mx-auto">
-                {/* Hero Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-                    {/* Image Column */}
+        <div className="py-8 sm:py-12">
+            {/* Header with Profile Picture */}
+            <div className="mb-8 flex flex-col sm:flex-row items-center gap-6">
+                {/* Profile Picture */}
+                <div className="flex-shrink-0">
                     <div className="relative">
-                        <div className="aspect-square rounded-2xl overflow-hidden">
-                            <img
-                                src={`${import.meta.env.BASE_URL}assets/profile.jpg`}
-                                alt="Frank's profile"
+                        <div className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] overflow-hidden rounded-full border-2 border-white/10">
+                            <img 
+                                src={`${import.meta.env.BASE_URL}${aboutData.profilePicture}`} 
+                                alt="Profile" 
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        {/* Decorative Elements */}
-                        <div className="absolute -z-10 top-4 -left-4 w-full h-full bg-green-500/10 rounded-2xl"></div>
-                        <div className="absolute -z-10 -top-4 left-4 w-full h-full bg-backgroundBColor rounded-2xl"></div>
-                    </div>
-
-                    {/* Text Column */}
-                    <div className="space-y-6">
-                        <h1 className="text-4xl lg:text-5xl font-bold text-white">
-                            About me
-                        </h1>
-                        <p className="text-lg text-white/80 leading-relaxed">
-                            Hi, I'm Frank. A 33 year old guy living in Utrecht. In my free time I like to play groupbased computer games, listen to music and bingewatch Netflix shows.
-                        </p>
+                        {/* Decorative element */}
+                        <div className="absolute -bottom-2 -right-2 w-full h-full border-2 border-green-500/50 rounded-full -z-10"></div>
                     </div>
                 </div>
+                
+                {/* Title */}
+                <div className="text-center sm:text-left">
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-white">
+                        {aboutData.name}
+                    </h1>
+                    <p className="text-lg text-gray-300">
+                        {aboutData.title}
+                    </p>
+                </div>
+            </div>
 
-                {/* Background Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    {/* Professional Background */}
-                    <div className="bg-backgroundBColor p-8 rounded-2xl">
-                        <h2 className="text-2xl font-bold text-white mb-4">
-                            Professional Background
-                        </h2>
-                        <p className="text-white/80 leading-relaxed">
-                            I am an experienced Game and Application Developer with a demonstrated history of working in the interactive media industry. Skilled in Unity3D for desktop and mobile applications. I have a solid background in Maya and After Effects.
-                        </p>
+            {/* Tabs Navigation */}
+            <div className="mb-6 overflow-x-auto scrollbar-hide">
+                <div className="flex space-x-1 border-b border-white/10 pb-1 min-w-max">
+                    <button 
+                        className={`px-3 sm:px-4 py-2 font-medium text-sm rounded-t-lg transition-colors ${
+                            activeTab === 'about' 
+                                ? 'bg-boxColorA text-white' 
+                                : 'text-gray-400 hover:text-white'
+                        }`}
+                        onClick={() => setActiveTab('about')}
+                    >
+                        Overview
+                    </button>
+                    <button 
+                        className={`px-3 sm:px-4 py-2 font-medium text-sm rounded-t-lg transition-colors ${
+                            activeTab === 'experience' 
+                                ? 'bg-boxColorA text-white' 
+                                : 'text-gray-400 hover:text-white'
+                        }`}
+                        onClick={() => setActiveTab('experience')}
+                    >
+                        Experience
+                    </button>
+                    <button 
+                        className={`px-3 sm:px-4 py-2 font-medium text-sm rounded-t-lg transition-colors ${
+                            activeTab === 'education' 
+                                ? 'bg-boxColorA text-white' 
+                                : 'text-gray-400 hover:text-white'
+                        }`}
+                        onClick={() => setActiveTab('education')}
+                    >
+                        Education
+                    </button>
+                    <button 
+                        className={`px-3 sm:px-4 py-2 font-medium text-sm rounded-t-lg transition-colors ${
+                            activeTab === 'skills' 
+                                ? 'bg-boxColorA text-white' 
+                                : 'text-gray-400 hover:text-white'
+                        }`}
+                        onClick={() => setActiveTab('skills')}
+                    >
+                        Skills
+                    </button>
+                </div>
+            </div>
+
+            {/* Tab Content - Fixed width container to prevent jumping */}
+            <div className="bg-gradient-to-b from-boxColorA to-boxColorA rounded-lg p-4 sm:p-6 min-h-[400px]">
+                {/* About Tab */}
+                {activeTab === 'about' && (
+                    <div className="w-full">
+                        <div>
+                            <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-4">
+                                Introduction
+                            </h2>
+                            <p className="text-white/90 leading-relaxed">
+                                {aboutData.introduction}
+                            </p>
+                            <p className="text-white/90 leading-relaxed mt-4">
+                                {aboutData.shortBio}
+                            </p>
+                        </div>
+                        
+                        {/* Quick Overview */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                            <div>
+                                <h3 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-2">
+                                    Current Position
+                                </h3>
+                                <p className="text-white font-medium">
+                                    {aboutData.experience[0].position}
+                                </p>
+                                <p className="text-white/70 text-sm">
+                                    {aboutData.experience[0].company}
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-2">
+                                    Education
+                                </h3>
+                                <p className="text-white font-medium">
+                                    {aboutData.education[0].degree.split(' - ')[0]}
+                                </p>
+                                <p className="text-white/70 text-sm">
+                                    {aboutData.education[0].institution}
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-2">
+                                    Expertise
+                                </h3>
+                                <div className="flex flex-wrap gap-1">
+                                    {aboutData.skills.expertise.slice(0, aboutData.skills.expertise.length - 1).map((skill, index) => (
+                                        <span key={index} className="text-xs bg-black/50 px-2 py-0.5 rounded-full text-white">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    {/* Education */}
-                    <div className="bg-backgroundBColor p-8 rounded-2xl">
-                        <h2 className="text-2xl font-bold text-white mb-4">
+                )}
+                
+                {/* Experience Tab */}
+                {activeTab === 'experience' && (
+                    <div className="w-full">
+                        <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-6">
+                            Professional Experience
+                        </h2>
+                        <div className="space-y-6">
+                            {aboutData.experience.map((exp, index) => (
+                                <div key={index} className="border-l-2 border-accentColor/30 pl-4 py-1">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-2">
+                                        <h3 className="text-white font-medium text-lg">{exp.position}</h3>
+                                        <span className="text-white/60 text-sm bg-black/30 px-2 py-1 rounded whitespace-nowrap">
+                                            {exp.period}
+                                        </span>
+                                    </div>
+                                    <p className="text-white/70 text-sm mb-2">{exp.company}</p>
+                                    <p className="text-white/80 text-sm">{exp.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+                
+                {/* Education Tab */}
+                {activeTab === 'education' && (
+                    <div className="w-full">
+                        <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-6">
                             Education
                         </h2>
-                        <p className="text-white/80 leading-relaxed">
-                            Strong engineering professional with a Master of Arts (EMMA) European Media Master of Arts focused on Creative Design for Digital Cultures.
-                        </p>
+                        <div className="space-y-6">
+                            {aboutData.education.map((edu, index) => (
+                                <div key={index} className="border-l-2 border-accentColor/30 pl-4 py-1">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-2">
+                                        <h3 className="text-white font-medium">{edu.degree}</h3>
+                                        <span className="text-white/60 text-sm bg-black/30 px-2 py-1 rounded whitespace-nowrap">
+                                            {edu.year}
+                                        </span>
+                                    </div>
+                                    <p className="text-white/70 text-sm">{edu.institution}</p>
+                                    {edu.specialization && (
+                                        <p className="text-white/80 text-sm mt-1 italic">{edu.specialization}</p>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-
-                {/* Skills Grid */}
-                <div className="mt-16">
-                    <h2 className="text-2xl font-bold text-white mb-8">Core Skills</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {[
-                            'Unity3D',
-                            'Mobile Development',
-                            'Desktop Applications',
-                            'Maya',
-                            'After Effects',
-                            'Game Development',
-                            'Interactive Media',
-                            'Creative Design'
-                        ].map((skill, index) => (
-                            <div 
-                                key={index}
-                                className="bg-backgroundBColor/50 border border-white/10 rounded-lg px-4 py-3 text-white/80 hover:text-green-500 hover:border-green-500/50 transition-colors"
-                            >
-                                {skill}
+                )}
+                
+                {/* Skills Tab */}
+                {activeTab === 'skills' && (
+                    <div className="w-full space-y-8">
+                        {/* Expertise */}
+                        <div>
+                            <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-4">
+                                Industry Knowledge
+                            </h2>
+                            <div className="flex flex-wrap gap-2">
+                                {aboutData.skills.expertise.map((skill, index) => (
+                                    <span key={index} className="text-xs bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-white border border-white/20">
+                                        {skill}
+                                    </span>
+                                ))}
                             </div>
-                        ))}
+                        </div>
+                        
+                        {/* Programming Languages */}
+                        <div>
+                            <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-4">
+                                Programming Languages
+                            </h2>
+                            <div className="flex flex-wrap gap-2">
+                                {aboutData.skills.programming.map((lang, index) => (
+                                    <span key={index} className="text-xs bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-white border border-white/20">
+                                        {lang}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        {/* Software */}
+                        <div>
+                            <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-4">
+                                Software
+                            </h2>
+                            <div className="flex flex-wrap gap-2">
+                                {aboutData.skills.software.map((software, index) => (
+                                    <span key={index} className="text-xs bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-white border border-white/20">
+                                        {software}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     )

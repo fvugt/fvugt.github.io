@@ -1,71 +1,84 @@
 {
-  "intro": {
-    "name": "Frank",
-    "age": 33,
-    "location": "Utrecht",
-    "title": "Game & Application Developer",
-    "bio": "Hi, I'm Frank. A 33 year old guy living in Utrecht. In my free time I like to play groupbased computer games, listen to music and bingewatch Netflix shows."
+  "name": "Frank van Vugt",
+  "title": "Teaching Software Development",
+  "introduction": "Hey there! Welcome to my portfolio of interactive experiences. I love exploring gamification and digital storytelling, blending my background in software development with my passion for teaching to create fun and engaging digital projects.",
+  "shortBio": "I craft interactive applications that combine technology with user-focused design. My background in coding and education gives me a unique approach to building meaningful experiences.",
+  "profilePicture": "assets/profile.jpg",
+  "contact": {
+    "email": "frankvanvugt@gmail.com",
+    "location": "Utrecht, Netherlands",
+    "phone": ""
+  },
+  "socialMedia": {
+    "github": "https://github.com/fvugt",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "youtube": ""
   },
   "experience": [
     {
-      "role": "Teacher Game Development",
+      "position": "Teacher Game Development",
       "company": "Grafisch Lyceum Utrecht (MBO)",
-      "period": "2019",
-      "current": true
+      "period": "2019-Present",
+      "description": "I teach courses on Unity, programming, and interactive design—helping students bring their game ideas to life."
     },
     {
-      "role": "Lead Programmer",
+      "position": "Lead Programmer",
       "company": "Shosho",
-      "period": "2017-2019"
+      "period": "2017-2019",
+      "description": "Led a talented programming team, handled the technical side of projects, and pushed boundaries with advanced Unity features."
     },
     {
-      "role": "Unity developer",
+      "position": "Unity Developer",
       "company": "Shosho",
-      "period": "2013-2017"
+      "period": "2013-2017",
+      "description": "Focused on building interactive applications and games, with a special interest in educational and commercial projects using Unity 3D."
     },
     {
-      "role": "3D generalist",
+      "position": "3D Generalist",
       "company": "Shosho",
-      "period": "2012-2013"
+      "period": "2012-2013",
+      "description": "Created 3D models, animations, and visual effects for a range of interactive projects and experiences."
     },
     {
-      "role": "Internship 3D Generalist",
+      "position": "Internship 3D Generalist",
       "company": "Shosho",
-      "period": "aug 2010 - feb 2011"
+      "period": "Aug 2010 - Feb 2011",
+      "description": "Helped out with 3D modeling, texturing, and animation for interactive projects."
     },
     {
-      "role": "Internship 3D Generalist",
+      "position": "Internship 3D Generalist",
       "company": "Lukkien",
-      "period": "jan 2007 - jul 2007"
+      "period": "Jan 2007 - Jul 2007",
+      "description": "Worked on 3D visualization and modeling for commercial projects."
     },
     {
-      "role": "Internship Flash Developer",
+      "position": "Internship Flash Developer",
       "company": "Sense-i",
-      "period": "aug 2006 - jan 2007"
+      "period": "Aug 2006 - Jan 2007",
+      "description": "Developed interactive web experiences using Flash and ActionScript."
     }
   ],
   "education": [
     {
-      "degree": "Pedagogisch Didactisch Getuigschrift (Teaching certificate)",
-      "level": "Post Bachelor",
-      "school": "Hogeschool Utrecht",
+      "degree": "Pedagogisch Didactisch Getuigschrift (Teaching certificate) - Post Bachelor",
+      "institution": "Hogeschool Utrecht",
       "year": "2019"
     },
     {
-      "degree": "Master of Arts (EMMA)",
+      "degree": "Master of Arts (EMMA) European Media Master of Arts",
+      "institution": "The Open University",
       "specialization": "Creative Design for Digital Cultures",
-      "school": "The Open University",
-      "period": "2011-2012"
+      "year": "2011-2012"
     },
     {
-      "degree": "Computer animation and visual effects",
-      "school": "Hogeschool voor de Kunsten Utrecht",
-      "period": "2008-2012"
+      "degree": "Computer Animation and Visual Effects",
+      "institution": "Hogeschool voor de Kunsten Utrecht",
+      "year": "2008-2012"
     },
     {
-      "degree": "Audiovisual interactive design",
-      "school": "Sint Lucas",
-      "period": "2004-2008"
+      "degree": "Audiovisual Interactive Design",
+      "institution": "Sint Lucas",
+      "year": "2004-2008"
     }
   ],
   "skills": {
@@ -75,7 +88,7 @@
       "Adobe Photoshop",
       "Adobe After Effects",
       "Drupal",
-      "Wordpress",
+      "WordPress",
       "Android Studio",
       "Xcode"
     ],
@@ -84,8 +97,8 @@
       "HLSL",
       "CG",
       "PHP",
-      "Javascript",
-      "mySQL"
+      "JavaScript",
+      "MySQL"
     ],
     "expertise": [
       "Programming",
@@ -93,7 +106,16 @@
       "Game Development",
       "3D Modeling",
       "Compositing",
-      "Rendering"
+      "Rendering",
+      "Interactive Development",
+      "Educational Technology",
+      "Gamification"
     ]
-  }
-} 
+  },
+  "interests": [
+    "Game Development",
+    "Educational Technology",
+    "Interactive Storytelling",
+    "Digital Art"
+  ]
+}

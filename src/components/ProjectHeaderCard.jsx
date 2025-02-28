@@ -75,7 +75,7 @@ function ProjectHeaderCard({ projectData }) {
 
     return (
         <div className="container mx-auto px-4">
-            <div className="bg-backgroundBColor rounded-xl overflow-hidden shadow-2xl">
+            <div className="bg-gradient-to-b from-boxColorA to-boxColorB rounded-xl overflow-hidden shadow-2xl">
                 {/* Media Section */}
                 <div className="relative h-[500px]">
                     {demoVideo ? (

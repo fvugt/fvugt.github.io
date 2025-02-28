@@ -7,8 +7,10 @@
 }
 
 @theme {
-  --color-backgroundColor: rgb(10,10,10);
-  --color-backgroundBColor: rgb(30,30,30);
+  --color-backgroundColorA: rgb(0,0,0);
+  --color-backgroundColorB: rgb(0,0,0);
+  --color-boxColorA: rgb(30,30,30);
+  --color-boxColorB: rgb(10,10,10);
   --color-textColor: rgb(255,255,255);
-  --color-accentColor: rgb(0,180,120);
+  --color-accentColor: rgb(0,220,100);
 }

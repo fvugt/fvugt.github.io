@@ -6,7 +6,8 @@ function ProjectHeader({ projectData }) {
         imgSrc,
         demoVideo,
         description,
-        details
+        details,
+        tags
     } = projectData
 
     const videoRef = useRef(null)
@@ -80,7 +81,7 @@ function ProjectHeader({ projectData }) {
     return (
         <div className="space-y-6">
             {/* Banner - Video or Image */}
-            <div className="w-full h-[400px] relative rounded-lg overflow-hidden" ref={containerRef}>
+            <div className="w-full h-[500px] relative rounded-lg overflow-hidden" ref={containerRef}>
                 {demoVideo ? (
                     <>
                         <video
@@ -133,7 +134,7 @@ function ProjectHeader({ projectData }) {
             </div>
 
             {/* Content Container */}
-            <div className="bg-backgroundBColor rounded-lg p-6">
+            <div className="bg-gradient-to-b from-boxColorA to-boxColorB rounded-lg p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 relative">
                     {/* Vertical Divider */}
                     <div className="hidden lg:block absolute right-[25%] top-0 bottom-0 w-px bg-white/10" />
@@ -141,7 +142,7 @@ function ProjectHeader({ projectData }) {
                     {/* Description */}
                     <div className="lg:col-span-3">
                         <div className="space-y-4 max-w-[900px]">
-                            <h2 className="text-green-500 font-medium uppercase tracking-wider text-xs">
+                            <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs">
                                 Project Overview
                             </h2>
                             <div 
@@ -154,7 +155,7 @@ function ProjectHeader({ projectData }) {
                     {/* Project Details */}
                     <div>
                         <div className="space-y-4">
-                            <h2 className="text-green-500 font-medium uppercase tracking-wider text-xs">
+                            <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs">
                                 Project Details
                             </h2>
                             <div className="space-y-2">
@@ -168,6 +169,22 @@ function ProjectHeader({ projectData }) {
                                     )
                                 })}
                             </div>
+                            
+                            {/* Tags Section - Moved from banner to details */}
+                            {tags && tags.length > 0 && (
+                                <div className="mt-6">
+                                    <h2 className="text-accentColor font-medium uppercase tracking-wider text-xs mb-3">
+                                        Skills & Categories
+                                    </h2>
+                                    <div className="flex flex-wrap gap-2">
+                                        {tags.map((tag, index) => (
+                                            <span key={index} className="text-xs bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-white border border-white/20">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
