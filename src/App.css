@@ -14,3 +14,16 @@
   --color-textColor: rgb(255,255,255);
   --color-accentColor: rgb(0,220,100);
 }
+
+/* Prevent layout shifts from scrollbar appearance */
+html {
+  overflow-y: scroll;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}

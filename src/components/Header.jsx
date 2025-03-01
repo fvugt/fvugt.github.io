@@ -84,33 +84,55 @@ function Header() {
 
 // Desktop Navigation Link
 function NavLink({ to, label, currentPath }) {
-    const isActive = currentPath === to || (to !== '/' && currentPath.startsWith(to))
+    // Check if this is a project detail page and we're on the Projects nav item
+    const isProjectPage = currentPath.startsWith('/projects/')
+    const isProjectsNavItem = to === '/'
+    
+    // Determine if this nav item should be active
+    const isActive = 
+        currentPath === to || 
+        (to !== '/' && currentPath.startsWith(to)) ||
+        (isProjectPage && isProjectsNavItem)
 
+    // Use a fixed width for all navigation items to prevent layout shifts
     return (
-        <Link
-            to={to}
-            className={`relative py-2 px-4 text-center w-[100px] inline-block transition-colors ${isActive
-                    ? 'text-white font-medium'
-                    : 'text-gray-400 hover:text-white'
+        <div className="inline-block w-24 text-center">
+            <Link
+                to={to}
+                className={`py-2 px-4 inline-block transition-colors ${
+                    isActive ? 'text-white font-medium' : 'text-gray-400 hover:text-white'
                 }`}
-        >
-            {label}
+            >
+                {label}
+            </Link>
             {isActive && (
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-accentColor rounded-full"></span>
+                <div className="h-0.5 bg-accentColor rounded-full mx-auto mt-1 w-16"></div>
             )}
-        </Link>
+            {/* Add an invisible placeholder when not active to maintain height */}
+            {!isActive && (
+                <div className="h-0.5 bg-transparent rounded-full mx-auto mt-1 w-16"></div>
+            )}
+        </div>
     )
 }
 
 // Mobile Navigation Link
 function MobileNavLink({ to, label, currentPath }) {
-    const isActive = currentPath === to || (to !== '/' && currentPath.startsWith(to))
+    // Check if this is a project detail page and we're on the Projects nav item
+    const isProjectPage = currentPath.startsWith('/projects/')
+    const isProjectsNavItem = to === '/'
+    
+    // Determine if this nav item should be active
+    const isActive = 
+        currentPath === to || 
+        (to !== '/' && currentPath.startsWith(to)) ||
+        (isProjectPage && isProjectsNavItem)
 
     return (
         <Link
             to={to}
-            className={`block py-2 px-4 rounded-md ${isActive
-                    ? 'bg-backgroundBColor text-white font-medium'
+            className={`block py-2 px-4 rounded-md font-medium ${isActive
+                    ? 'bg-backgroundBColor text-white'
                     : 'text-gray-400 hover:text-white hover:bg-backgroundBColor/50'
                 }`}
         >
