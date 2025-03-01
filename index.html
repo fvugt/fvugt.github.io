@@ -17,12 +17,25 @@
       // the correct url will be waiting in the browser's history for
       // the single page app to route accordingly.
       (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
+        // Check if we have a redirect in the URL
+        if (l.search && l.search.indexOf('?/') === 0) {
+          var decoded = l.search.slice(2); // Remove the '?/' part
+          
+          // Prevent infinite loops by checking for repeated patterns
+          if (decoded.includes('~and~') && decoded.split('~and~').length > 5) {
+            // Too many ~and~ sequences, likely a loop - just go to homepage
+            window.history.replaceState(null, null, l.pathname);
+            return;
+          }
+          
+          // Replace ~and~ with & in the decoded path
+          decoded = decoded.replace(/~and~/g, '&');
+          
+          // Update the browser history
+          window.history.replaceState(
+            null, 
+            null,
+            l.pathname + decoded + l.hash
           );
         }
       }(window.location))
@@ -31,6 +44,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="./src/main.jsx"></script>
   </body>
 </html>
