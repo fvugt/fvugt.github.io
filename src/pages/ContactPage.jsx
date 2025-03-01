@@ -39,7 +39,7 @@ function ContactPage() {
     };
 
     return (
-        <div className="py-8 sm:py-12 ">
+        <div className="py-8">
 
             <div className="w-full mx-auto">
                 {/* Header with Profile Picture */}

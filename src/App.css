@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import 'tailwindcss';
 
 @layer base {
@@ -13,6 +14,7 @@
   --color-boxColorB: rgb(10,10,10);
   --color-textColor: rgb(255,255,255);
   --color-accentColor: rgb(0,220,100);
+  --font-title: Space Mono, monospace;
 }
 
 /* Prevent layout shifts from scrollbar appearance */
