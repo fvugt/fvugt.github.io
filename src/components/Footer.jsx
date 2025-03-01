@@ -41,11 +41,11 @@ function Footer() {
                 <div className="w-full h-[1px] bg-white/20 mb-2 "></div>
                 <div className="flex flex-col md:flex-row justify-between items-center">
 
-                    <div className="mb-4 md:mb-0">
-                        <Link to="/" className="text-white font-bold text-xl ml-4">
+                    <div className="mb-4 md:mb-0 text-center md:text-left w-full md:w-auto">
+                        <Link to="/" className="text-white font-bold text-xl md:ml-4">
                             {aboutData.name}
                         </Link>
-                        <p className="text-gray-400 text-sm mt-2 ml-4">
+                        <p className="text-gray-400 text-sm mt-2 md:ml-4">
                             {aboutData.title}
                         </p>
                     </div>
